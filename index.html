@@ -2,7 +2,16 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" id="viewportMeta">
+<script>
+(function(){
+  var isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.matchMedia('(display-mode: fullscreen)').matches||window.navigator.standalone===true;
+  if(!isStandalone)return;
+  var m=document.getElementById('viewportMeta');
+  if(m)m.setAttribute('content','width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no');
+  document.documentElement.classList.add('pwa-standalone');
+})();
+</script>
 <meta name="theme-color" content="#FFFBFE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1B1F" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Интерактивный план поездки на Тенерифе · 15 окт — 1 ноя 2026">
@@ -22,6 +31,10 @@ html{--south:#C2410C;--south-container:#FFEDD5;--north:#0369A1;--north-container
 html[data-theme="dark"]{--south:#FB923C;--south-container:#431407;--north:#38BDF8;--north-container:#082F49;--transition-c:#C084FC;--transition-container:#2E1065;--flight:#F87171;--flight-container:#450A0A;--bg:#141218;--surface:#1C1B1F;--surface-1:#211F26;--surface-2:#2B2930;--surface-3:#36343B;--text:#E6E1E5;--text-medium:#CAC4D0;--text-light:#938F99;--outline:#49454F;--outline-variant:#36343B;--elev-1:0 1px 2px rgba(0,0,0,.4),0 1px 3px 1px rgba(0,0,0,.3);--elev-2:0 1px 2px rgba(0,0,0,.45),0 2px 6px 2px rgba(0,0,0,.35);--elev-3:0 1px 3px rgba(0,0,0,.5),0 4px 8px 3px rgba(0,0,0,.35);--info:#7DD3FC;--info-bg:#082F49;--info-border:#0EA5E9;--warning:#FCD34D;--warning-bg:#422006;--warning-border:#F59E0B;--success:#86EFAC;--success-bg:#052E16;--success-border:#22C55E;--danger:#FCA5A5;--danger-bg:#450A0A;--danger-border:#EF4444;--purple:#D8B4FE;--purple-bg:#2E1065;--purple-border:#A855F7;--cost:#FCD34D;--cost-bg:linear-gradient(135deg,#422006,#552A08);--cost-border:#F59E0B;--ripple:rgba(255,255,255,.14);--details-bg:#0A1929;--details-border:#1565C0}}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html.pwa-standalone,html.pwa-standalone body{touch-action:manipulation}
+@media (display-mode:standalone),(display-mode:fullscreen){
+  html{touch-action:manipulation}
+}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;padding:calc(16px + env(safe-area-inset-top,0px)) calc(16px + env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));min-height:100vh;transition:background .35s,color .35s;font-size:15px;-webkit-font-smoothing:antialiased}
 .container{max-width:1200px;margin:0 auto}
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--south),var(--north));z-index:1000;transition:width .1s linear;border-radius:0 3px 3px 0;pointer-events:none}
@@ -1457,6 +1470,13 @@ a.tp-place:hover{text-decoration:underline}
 <script>
 (function(){
 'use strict';
+
+var isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.matchMedia('(display-mode: fullscreen)').matches||window.navigator.standalone===true;
+if(isStandalone){
+  document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
+  document.addEventListener('gesturechange',function(e){e.preventDefault()},{passive:false});
+  document.addEventListener('gestureend',function(e){e.preventDefault()},{passive:false});
+}
 
 // RIPPLE
 function attachRipple(el){el.addEventListener('pointerdown',function(e){if(e.button!==undefined&&e.button!==0)return;var r=el.getBoundingClientRect();var s=Math.max(r.width,r.height);var x=e.clientX-r.left-s/2;var y=e.clientY-r.top-s/2;var ink=document.createElement('span');ink.className='ripple-ink';ink.style.width=ink.style.height=s+'px';ink.style.left=x+'px';ink.style.top=y+'px';el.appendChild(ink);setTimeout(function(){if(ink.parentNode)ink.parentNode.removeChild(ink)},700)})}
