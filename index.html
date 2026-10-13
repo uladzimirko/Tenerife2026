@@ -107,8 +107,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans
 .pay-row:hover{transform:translateX(3px)}
 .pay-row .pr-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--surface-3);font-size:1rem;flex-shrink:0}
 .pay-row .pr-info{flex:1;min-width:0}
-.pay-row .pr-title{font-weight:600;color:var(--text);font-size:.88rem}
-.pay-row .pr-meta{font-size:.75rem;color:var(--text-light);margin-top:2px}
+.pay-row .pr-title{font-weight:600;color:var(--text);font-size:.88rem;line-height:1.35}
+.pay-row .pr-meta{font-size:.75rem;color:var(--text-light);margin-top:2px;line-height:1.4;overflow-wrap:anywhere}
 .pay-row .pr-map{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--info-bg);color:var(--info);flex-shrink:0;font-size:.95rem;text-decoration:none;transition:transform .2s,background .2s}
 .pay-row .pr-map:hover{transform:scale(1.06);background:var(--info-border);color:#fff}
 .pay-badge{padding:4px 10px;border-radius:var(--r-full);font-size:.7rem;font-weight:700;letter-spacing:.3px;flex-shrink:0;text-transform:uppercase}
@@ -296,6 +296,12 @@ a.tp-place:hover{text-decoration:underline}
   .t-mid::before,.t-mid::after{display:none}
   .t-mid{padding:4px 0}
   .mn-btn{padding:10px 14px;font-size:.8rem}
+  .pay-row{display:grid;grid-template-columns:36px 1fr;grid-template-rows:auto auto auto;column-gap:12px;row-gap:8px;align-items:start;padding:12px}
+  .pay-row .pr-icon{grid-column:1;grid-row:1}
+  .pay-row .pr-info{grid-column:2;grid-row:1;flex:none;min-width:0;width:100%}
+  .pay-row .pr-map{grid-column:1/-1;grid-row:2;justify-self:start;margin:0}
+  .pay-row .pay-badge{grid-column:1/-1;grid-row:3;justify-self:start;max-width:100%;white-space:normal;text-align:left;line-height:1.3;padding:6px 12px}
+  .pay-row:hover{transform:none}
 }
 @media(max-width:600px) and (min-width:520px){
   .route-hero::after{top:48px;right:8px}
