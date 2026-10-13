@@ -2,169 +2,208 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-    <title>🌴 Тенерифе 12 дней · Интерактивный план</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+    <meta name="theme-color" content="#FFFBFE" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1C1B1F" media="(prefers-color-scheme: dark)">
+
+    <!-- ============ FAVICON (inline SVG, no external file needed) ============ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23E67E22'/%3E%3Ccircle%20cx='32'%20cy='24'%20r='11'%20fill='%23FFF8E1'/%3E%3Cpath%20d='M0%2040%20Q16%2032%2032%2040%20T64%2040%20V64%20H0%20Z'%20fill='%232980B9'/%3E%3Cpath%20d='M0%2050%20Q16%2042%2032%2050%20T64%2050%20V64%20H0%20Z'%20fill='%231A5276'%20opacity='0.55'/%3E%3C/svg%3E">
+    <!-- Fallback для старых браузеров -->
+    <link rel="alternate icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23E67E22'/%3E%3Ccircle%20cx='32'%20cy='24'%20r='11'%20fill='%23FFF8E1'/%3E%3Cpath%20d='M0%2040%20Q16%2032%2032%2040%20T64%2040%20V64%20H0%20Z'%20fill='%232980B9'/%3E%3C/svg%3E">
+    <!-- Apple touch icon (для добавления на домашний экран iOS) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%20180'%3E%3Crect%20width='180'%20height='180'%20fill='%23E67E22'/%3E%3Ccircle%20cx='90'%20cy='68'%20r='30'%20fill='%23FFF8E1'/%3E%3Cpath%20d='M0%20112%20Q45%2090%2090%20112%20T180%20112%20V180%20H0%20Z'%20fill='%232980B9'/%3E%3Cpath%20d='M0%20140%20Q45%20118%2090%20140%20T180%20140%20V180%20H0%20Z'%20fill='%231A5276'%20opacity='0.55'/%3E%3C/svg%3E">
+
+    <title>🌴 Тенерифе · Интерактивный план</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-        /* ============ LIGHT THEME (default) ============ */
+        /* ================================================================
+           MATERIAL DESIGN 3 TOKENS + LIGHT THEME (default)
+           ================================================================ */
         html {
-            --south: #e67e22;
-            --north: #2980b9;
-            --transition: #8e44ad;
-            --flight: #c0392b;
-            --bg: #f5f7fa;
-            --card: #ffffff;
-            --text: #2c3e50;
-            --text-light: #7f8c8d;
-            --border: #ececec;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 28px rgba(0,0,0,0.12);
-            --header-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            --header-text: #ffffff;
-            --header-badge-bg: rgba(255,255,255,0.15);
-            --timeline-line: #e0e0e0;
-            --tab-bg: #ffffff;
-            --tab-text: #7f8c8d;
-            --tab-active-bg: #1a1a2e;
-            --tab-active-text: #ffffff;
-            --shopping-bg: #f8f9fa;
-            --cost-bg: linear-gradient(135deg, #fff9e6, #fff3cc);
-            --cost-border: #f39c12;
-            --cost-text: #7d6608;
-            --info-bg: #e8f4fd;
-            --info-border: #2980b9;
-            --info-text: #1a5276;
-            --warning-bg: #fef5e7;
-            --warning-border: #f39c12;
-            --warning-text: #7d6608;
-            --success-bg: #e8f8f0;
-            --success-border: #27ae60;
-            --success-text: #1e8449;
-            --danger-bg: #fde8e8;
-            --danger-border: #e74c3c;
-            --danger-text: #922b21;
-            --purple-bg: #f4ecf7;
-            --purple-border: #8e44ad;
-            --purple-text: #6c3483;
-            --tag-maps-bg: #e8f4fd;
-            --tag-maps-text: #2980b9;
-            --tag-hours-bg: #f0e6ff;
-            --tag-hours-text: #8e44ad;
-            --tag-cost-bg: #fff3e0;
-            --tag-cost-text: #e67e22;
-            --tag-tip-bg: #e8f8f0;
-            --tag-tip-text: #27ae60;
-            --easy-bg: #e8f8f0;
-            --medium-bg: #fef5e7;
-            --hard-bg: #fde8e8;
-            --overlay-glow: rgba(255,255,255,0.05);
+            /* Brand colors */
+            --south: #C2410C;
+            --south-container: #FFEDD5;
+            --north: #0369A1;
+            --north-container: #E0F2FE;
+            --transition-c: #7E22CE;
+            --transition-container: #F3E8FF;
+            --flight: #B91C1C;
+            --flight-container: #FEE2E2;
+
+            /* Material surfaces */
+            --bg: #FEF7FF;
+            --surface: #FFFFFF;
+            --surface-1: #F7F2FA;
+            --surface-2: #F3EDF7;
+            --surface-3: #EEE8F4;
+            --surface-inverse: #313033;
+
+            /* Text */
+            --text: #1C1B1F;
+            --text-medium: #49454F;
+            --text-light: #79747E;
+            --outline: #CAC4D0;
+            --outline-variant: #E7E0EC;
+
+            /* Elevation shadows (MD3) */
+            --elev-0: none;
+            --elev-1: 0 1px 2px rgba(0,0,0,0.08), 0 1px 3px 1px rgba(0,0,0,0.05);
+            --elev-2: 0 1px 2px rgba(0,0,0,0.10), 0 2px 6px 2px rgba(0,0,0,0.06);
+            --elev-3: 0 1px 3px rgba(0,0,0,0.10), 0 4px 8px 3px rgba(0,0,0,0.08);
+            --elev-4: 0 2px 3px rgba(0,0,0,0.12), 0 6px 10px 4px rgba(0,0,0,0.09);
+            --elev-6: 0 4px 6px rgba(0,0,0,0.14), 0 8px 12px 6px rgba(0,0,0,0.10);
+
+            /* State layer opacities */
+            --state-hover: 0.08;
+            --state-focus: 0.12;
+            --state-press: 0.12;
+
+            /* Radius */
+            --r-xs: 8px;
+            --r-sm: 12px;
+            --r-md: 16px;
+            --r-lg: 24px;
+            --r-xl: 28px;
+            --r-full: 999px;
+
+            /* Motion */
+            --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+            --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+            --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+            --ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
+            /* Semantic */
+            --info: #0369A1;
+            --info-bg: #E0F2FE;
+            --info-border: #0284C7;
+            --warning: #B45309;
+            --warning-bg: #FEF3C7;
+            --warning-border: #F59E0B;
+            --success: #15803D;
+            --success-bg: #DCFCE7;
+            --success-border: #22C55E;
+            --danger: #B91C1C;
+            --danger-bg: #FEE2E2;
+            --danger-border: #EF4444;
+            --purple: #6B21A8;
+            --purple-bg: #F3E8FF;
+            --purple-border: #A855F7;
+            --cost: #92400E;
+            --cost-bg: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            --cost-border: #F59E0B;
+
+            --ripple-color: rgba(0,0,0,0.12);
         }
 
-        /* ============ SYSTEM DARK (when no override) ============ */
         @media (prefers-color-scheme: dark) {
             html:not([data-theme="light"]) {
-                --bg: #0d1117;
-                --card: #161b22;
-                --text: #e6edf3;
-                --text-light: #8b949e;
-                --border: #30363d;
-                --shadow: 0 4px 20px rgba(0,0,0,0.5);
-                --shadow-hover: 0 8px 28px rgba(0,0,0,0.6);
-                --header-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2f4a 100%);
-                --header-text: #ffffff;
-                --header-badge-bg: rgba(255,255,255,0.1);
-                --timeline-line: #30363d;
-                --tab-bg: #161b22;
-                --tab-text: #8b949e;
-                --tab-active-bg: #e6edf3;
-                --tab-active-text: #0d1117;
-                --shopping-bg: #1a2028;
-                --cost-bg: linear-gradient(135deg, #2a2410, #3d3415);
-                --cost-border: #d4a017;
-                --cost-text: #e8c547;
-                --info-bg: #0f2233;
-                --info-border: #4a9eda;
-                --info-text: #a4cff0;
-                --warning-bg: #2e2410;
-                --warning-border: #d4a017;
-                --warning-text: #e8c547;
-                --success-bg: #0f2e1f;
-                --success-border: #3fb96f;
-                --success-text: #86e0a8;
-                --danger-bg: #2e1414;
-                --danger-border: #e74c3c;
-                --danger-text: #f5a3a3;
-                --purple-bg: #221633;
-                --purple-border: #a569bd;
-                --purple-text: #d2b4de;
-                --tag-maps-bg: #0f2233;
-                --tag-maps-text: #6db6e8;
-                --tag-hours-bg: #221633;
-                --tag-hours-text: #c39bd3;
-                --tag-cost-bg: #2e2410;
-                --tag-cost-text: #f0b95c;
-                --tag-tip-bg: #0f2e1f;
-                --tag-tip-text: #6ddba0;
-                --easy-bg: #0f2e1f;
-                --medium-bg: #2e2410;
-                --hard-bg: #2e1414;
-                --overlay-glow: rgba(255,255,255,0.02);
+                --south: #FB923C;
+                --south-container: #431407;
+                --north: #38BDF8;
+                --north-container: #082F49;
+                --transition-c: #C084FC;
+                --transition-container: #2E1065;
+                --flight: #F87171;
+                --flight-container: #450A0A;
+
+                --bg: #141218;
+                --surface: #1C1B1F;
+                --surface-1: #211F26;
+                --surface-2: #2B2930;
+                --surface-3: #36343B;
+                --surface-inverse: #E6E1E5;
+
+                --text: #E6E1E5;
+                --text-medium: #CAC4D0;
+                --text-light: #938F99;
+                --outline: #49454F;
+                --outline-variant: #36343B;
+
+                --elev-1: 0 1px 2px rgba(0,0,0,0.4), 0 1px 3px 1px rgba(0,0,0,0.3);
+                --elev-2: 0 1px 2px rgba(0,0,0,0.45), 0 2px 6px 2px rgba(0,0,0,0.35);
+                --elev-3: 0 1px 3px rgba(0,0,0,0.5), 0 4px 8px 3px rgba(0,0,0,0.35);
+                --elev-4: 0 2px 3px rgba(0,0,0,0.5), 0 6px 10px 4px rgba(0,0,0,0.4);
+                --elev-6: 0 4px 6px rgba(0,0,0,0.55), 0 8px 12px 6px rgba(0,0,0,0.45);
+
+                --info: #7DD3FC;
+                --info-bg: #082F49;
+                --info-border: #0EA5E9;
+                --warning: #FCD34D;
+                --warning-bg: #422006;
+                --warning-border: #F59E0B;
+                --success: #86EFAC;
+                --success-bg: #052E16;
+                --success-border: #22C55E;
+                --danger: #FCA5A5;
+                --danger-bg: #450A0A;
+                --danger-border: #EF4444;
+                --purple: #D8B4FE;
+                --purple-bg: #2E1065;
+                --purple-border: #A855F7;
+                --cost: #FCD34D;
+                --cost-bg: linear-gradient(135deg, #422006, #552A08);
+                --cost-border: #F59E0B;
+
+                --ripple-color: rgba(255,255,255,0.14);
             }
         }
 
-        /* ============ MANUAL DARK ============ */
         html[data-theme="dark"] {
-            --bg: #0d1117;
-            --card: #161b22;
-            --text: #e6edf3;
-            --text-light: #8b949e;
-            --border: #30363d;
-            --shadow: 0 4px 20px rgba(0,0,0,0.5);
-            --shadow-hover: 0 8px 28px rgba(0,0,0,0.6);
-            --header-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2f4a 100%);
-            --header-text: #ffffff;
-            --header-badge-bg: rgba(255,255,255,0.1);
-            --timeline-line: #30363d;
-            --tab-bg: #161b22;
-            --tab-text: #8b949e;
-            --tab-active-bg: #e6edf3;
-            --tab-active-text: #0d1117;
-            --shopping-bg: #1a2028;
-            --cost-bg: linear-gradient(135deg, #2a2410, #3d3415);
-            --cost-border: #d4a017;
-            --cost-text: #e8c547;
-            --info-bg: #0f2233;
-            --info-border: #4a9eda;
-            --info-text: #a4cff0;
-            --warning-bg: #2e2410;
-            --warning-border: #d4a017;
-            --warning-text: #e8c547;
-            --success-bg: #0f2e1f;
-            --success-border: #3fb96f;
-            --success-text: #86e0a8;
-            --danger-bg: #2e1414;
-            --danger-border: #e74c3c;
-            --danger-text: #f5a3a3;
-            --purple-bg: #221633;
-            --purple-border: #a569bd;
-            --purple-text: #d2b4de;
-            --tag-maps-bg: #0f2233;
-            --tag-maps-text: #6db6e8;
-            --tag-hours-bg: #221633;
-            --tag-hours-text: #c39bd3;
-            --tag-cost-bg: #2e2410;
-            --tag-cost-text: #f0b95c;
-            --tag-tip-bg: #0f2e1f;
-            --tag-tip-text: #6ddba0;
-            --easy-bg: #0f2e1f;
-            --medium-bg: #2e2410;
-            --hard-bg: #2e1414;
-            --overlay-glow: rgba(255,255,255,0.02);
+            --south: #FB923C;
+            --south-container: #431407;
+            --north: #38BDF8;
+            --north-container: #082F49;
+            --transition-c: #C084FC;
+            --transition-container: #2E1065;
+            --flight: #F87171;
+            --flight-container: #450A0A;
+
+            --bg: #141218;
+            --surface: #1C1B1F;
+            --surface-1: #211F26;
+            --surface-2: #2B2930;
+            --surface-3: #36343B;
+            --surface-inverse: #E6E1E5;
+
+            --text: #E6E1E5;
+            --text-medium: #CAC4D0;
+            --text-light: #938F99;
+            --outline: #49454F;
+            --outline-variant: #36343B;
+
+            --elev-1: 0 1px 2px rgba(0,0,0,0.4), 0 1px 3px 1px rgba(0,0,0,0.3);
+            --elev-2: 0 1px 2px rgba(0,0,0,0.45), 0 2px 6px 2px rgba(0,0,0,0.35);
+            --elev-3: 0 1px 3px rgba(0,0,0,0.5), 0 4px 8px 3px rgba(0,0,0,0.35);
+            --elev-4: 0 2px 3px rgba(0,0,0,0.5), 0 6px 10px 4px rgba(0,0,0,0.4);
+            --elev-6: 0 4px 6px rgba(0,0,0,0.55), 0 8px 12px 6px rgba(0,0,0,0.45);
+
+            --info: #7DD3FC;
+            --info-bg: #082F49;
+            --info-border: #0EA5E9;
+            --warning: #FCD34D;
+            --warning-bg: #422006;
+            --warning-border: #F59E0B;
+            --success: #86EFAC;
+            --success-bg: #052E16;
+            --success-border: #22C55E;
+            --danger: #FCA5A5;
+            --danger-bg: #450A0A;
+            --danger-border: #EF4444;
+            --purple: #D8B4FE;
+            --purple-bg: #2E1065;
+            --purple-border: #A855F7;
+            --cost: #FCD34D;
+            --cost-bg: linear-gradient(135deg, #422006, #552A08);
+            --cost-border: #F59E0B;
+
+            --ripple-color: rgba(255,255,255,0.14);
         }
 
+        /* ================================================================
+           BASE
+           ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -174,161 +213,341 @@
 
         html {
             -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.55;
+            padding: 16px;
             min-height: 100vh;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.35s var(--ease-standard), color 0.35s var(--ease-standard);
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* ================================================================
+           SCROLL PROGRESS BAR (top of page)
+           ================================================================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--south), var(--north));
+            z-index: 1000;
+            transition: width 0.1s linear;
+            border-radius: 0 3px 3px 0;
+            pointer-events: none;
         }
 
-        /* ============ HEADER ============ */
+        /* ================================================================
+           HEADER (Material Top App Bar)
+           ================================================================ */
         .header {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--header-bg);
-            border-radius: 16px;
-            color: var(--header-text);
-            margin-bottom: 30px;
+            padding: 44px 20px 36px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: var(--r-xl);
+            color: #fff;
+            margin-bottom: 24px;
             position: relative;
             overflow: hidden;
-            transition: background 0.3s ease;
+            box-shadow: var(--elev-3);
+            animation: headerIn 0.7s var(--ease-emphasized) both;
+        }
+
+        @keyframes headerIn {
+            from { opacity: 0; transform: translateY(-16px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .header::before {
             content: '🏝️';
             position: absolute;
-            font-size: 200px;
+            font-size: 220px;
             opacity: 0.05;
-            right: -40px;
-            top: -60px;
+            right: -50px;
+            top: -70px;
             transform: rotate(-15deg);
             pointer-events: none;
+            animation: floatEmoji 8s ease-in-out infinite;
+        }
+
+        @keyframes floatEmoji {
+            0%,100% { transform: rotate(-15deg) translateY(0); }
+            50%     { transform: rotate(-12deg) translateY(-14px); }
         }
 
         .header h1 {
-            font-size: 2.4rem;
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
         }
 
         .header .subtitle {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3vw, 1.05rem);
             opacity: 0.85;
-            font-weight: 300;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
         .header .dates {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 16px;
-            background: var(--header-badge-bg);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            backdrop-filter: blur(10px);
+            gap: 10px;
+            margin-top: 18px;
+            background: rgba(255,255,255,0.16);
+            padding: 10px 22px;
+            border-radius: var(--r-full);
+            font-size: 0.9rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.14);
+            position: relative;
+            z-index: 1;
+            animation: fadeSlideUp 0.6s 0.2s var(--ease-decelerate) both;
         }
 
-        .header .dates i { opacity: 0.7; }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-        /* Theme toggle */
+        /* Theme toggle — Material icon button */
         .theme-toggle {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 14px;
+            right: 14px;
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 1rem;
+            border: none;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 1.05rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: background 0.2s var(--ease-standard);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             touch-action: manipulation;
             z-index: 10;
+            overflow: hidden;
+            position: absolute;
         }
 
-        .theme-toggle:hover,
-        .theme-toggle:active {
-            background: rgba(255,255,255,0.25);
-            transform: scale(1.05);
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
         }
 
-        /* ============ STATS ============ */
+        .theme-toggle:hover::after,
+        .theme-toggle:focus-visible::after { opacity: var(--state-hover); }
+        .theme-toggle:active::after { opacity: var(--state-press); }
+
+        .theme-toggle:hover {
+            transform: scale(1.06);
+        }
+
+        .theme-toggle i {
+            transition: transform 0.5s var(--ease-emphasized);
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-toggle.spinning i {
+            transform: rotate(360deg);
+        }
+
+        /* Header icon buttons (tips) */
+        .header-icon-btn {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            touch-action: manipulation;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .header-icon-btn:hover { transform: scale(1.06); background: rgba(255,255,255,0.2); }
+        .header-icon-btn:active { transform: scale(0.96); }
+
+        /* ================================================================
+           STATS (Material cards, staggered entrance)
+           ================================================================ */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
         .stat-card {
-            background: var(--card);
-            border-radius: 16px;
-            padding: 20px 12px;
+            background: var(--surface);
+            border-radius: var(--r-md);
+            padding: 18px 12px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s, background 0.3s;
+            box-shadow: var(--elev-1);
+            transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard), background 0.35s;
+            position: relative;
+            overflow: hidden;
+            animation: statIn 0.5s var(--ease-decelerate) both;
         }
 
-        .stat-card:hover { transform: translateY(-3px); }
-        .stat-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
-        .stat-card .value { font-size: 1.5rem; font-weight: 800; }
+        .stat-card:nth-child(1) { animation-delay: 0.05s; }
+        .stat-card:nth-child(2) { animation-delay: 0.10s; }
+        .stat-card:nth-child(3) { animation-delay: 0.15s; }
+        .stat-card:nth-child(4) { animation-delay: 0.20s; }
+
+        @keyframes statIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--elev-3);
+        }
+
+        .stat-card .icon {
+            font-size: 1.7rem;
+            margin-bottom: 6px;
+            display: inline-block;
+            transition: transform 0.3s var(--ease-emphasized);
+        }
+
+        .stat-card:hover .icon { transform: scale(1.15) rotate(-4deg); }
+
+        .stat-card .value { font-size: 1.4rem; font-weight: 800; color: var(--text); line-height: 1.2; }
         .stat-card .label {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+            letter-spacing: 0.6px;
+            font-weight: 600;
+            margin-top: 2px;
         }
 
-        /* ============ TABS ============ */
+        /* ================================================================
+           SUMMARY (hotels)
+           ================================================================ */
+        .summary-section {
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            box-shadow: var(--elev-1);
+            padding: 22px 20px;
+            margin-bottom: 24px;
+            transition: background 0.35s;
+            animation: statIn 0.6s 0.25s var(--ease-decelerate) both;
+        }
+
+        .summary-section h3 {
+            font-size: 1rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .summary-card {
+            padding: 16px 18px;
+            border-radius: var(--r-md);
+            font-size: 0.88rem;
+            transition: transform 0.25s var(--ease-standard), box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card:hover { transform: translateY(-2px); }
+
+        .summary-card.south {
+            background: linear-gradient(135deg, var(--south-container), var(--surface));
+            border-left: 4px solid var(--south);
+        }
+        .summary-card.north {
+            background: linear-gradient(135deg, var(--north-container), var(--surface));
+            border-left: 4px solid var(--north);
+        }
+        .summary-card.transition-card {
+            background: linear-gradient(135deg, var(--transition-container), var(--surface));
+            border-left: 4px solid var(--transition-c);
+        }
+        .summary-card.flight-card {
+            background: linear-gradient(135deg, var(--flight-container), var(--surface));
+            border-left: 4px solid var(--flight);
+        }
+
+        .summary-card h4 { font-weight: 700; margin-bottom: 5px; font-size: 0.92rem; color: var(--text); }
+        .summary-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
+
+        /* ================================================================
+           TABS (Material chips)
+           ================================================================ */
         .tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             overflow-x: auto;
-            padding: 4px 2px 10px;
-            scrollbar-width: thin;
+            padding: 4px 4px 12px;
+            scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x proximity;
         }
-
-        .tabs::-webkit-scrollbar { height: 4px; }
-        .tabs::-webkit-scrollbar-thumb {
-            background: var(--text-light);
-            opacity: 0.3;
-            border-radius: 4px;
-        }
+        .tabs::-webkit-scrollbar { display: none; }
 
         .tab {
-            padding: 11px 20px;
-            border-radius: 50px;
-            border: 2px solid transparent;
-            background: var(--tab-bg);
+            padding: 10px 18px;
+            border-radius: var(--r-full);
+            border: 1px solid var(--outline-variant);
+            background: var(--surface);
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             white-space: nowrap;
-            transition: all 0.2s;
-            color: var(--tab-text);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: background 0.2s var(--ease-standard),
+                        color 0.2s var(--ease-standard),
+                        border-color 0.2s,
+                        transform 0.15s,
+                        box-shadow 0.2s;
+            color: var(--text-medium);
             flex-shrink: 0;
             font-family: inherit;
             touch-action: manipulation;
@@ -336,230 +555,321 @@
             appearance: none;
             user-select: none;
             -webkit-user-select: none;
+            position: relative;
+            overflow: hidden;
             scroll-snap-align: start;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
         }
 
-        .tab:hover { border-color: var(--border); color: var(--text); }
+        .tab:hover {
+            background: var(--surface-1);
+            border-color: var(--outline);
+            color: var(--text);
+        }
+
+        .tab:active { transform: scale(0.96); }
 
         .tab.active {
-            background: var(--tab-active-bg);
-            color: var(--tab-active-text);
-            border-color: var(--tab-active-bg);
-            box-shadow: 0 4px 12px rgba(26,26,46,0.3);
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+            box-shadow: var(--elev-2);
+            transform: scale(1);
         }
 
-        .tab .tab-icon { margin-right: 4px; }
+        .tab .tab-icon { margin-right: 4px; transition: transform 0.3s var(--ease-emphasized); }
+        .tab.active .tab-icon { transform: scale(1.15); }
 
-        /* ============ DAY CARDS ============ */
-        #days-wrapper {
-            touch-action: pan-y;
-        }
+        /* ================================================================
+           DAY CARDS (Material elevated cards, fade-through transition)
+           ================================================================ */
+        #days-wrapper { touch-action: pan-y; }
 
         .day-card {
-            background: var(--card);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            box-shadow: var(--elev-1);
             margin-bottom: 20px;
             overflow: hidden;
             display: none;
-            animation: fadeIn 0.3s ease;
-            transition: background 0.3s;
+            transition: background 0.35s;
         }
 
-        .day-card.active { display: block; }
+        .day-card.active {
+            display: block;
+            animation: dayIn 0.45s var(--ease-emphasized) both;
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes dayIn {
+            from { opacity: 0; transform: translateY(16px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .day-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
+            padding: 20px 22px;
+            border-bottom: 1px solid var(--outline-variant);
             flex-wrap: wrap;
+            background: linear-gradient(180deg, var(--surface), var(--surface-1));
         }
 
         .day-header .day-num {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+            width: 52px;
+            height: 52px;
+            border-radius: var(--r-md);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.1rem;
-            color: white;
+            font-size: 1.15rem;
+            color: #fff;
             flex-shrink: 0;
+            box-shadow: var(--elev-1);
+            transition: transform 0.3s var(--ease-emphasized);
+        }
+
+        .day-card.active .day-header .day-num {
+            animation: numPop 0.5s 0.1s var(--ease-emphasized) both;
+        }
+
+        @keyframes numPop {
+            0%   { transform: scale(0.6) rotate(-12deg); opacity: 0; }
+            60%  { transform: scale(1.08) rotate(3deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0); }
         }
 
         .day-header .day-info { flex: 1; min-width: 150px; }
-        .day-header .day-info h2 { font-size: 1.2rem; font-weight: 700; color: var(--text); }
-        .day-header .day-info .day-date { font-size: 0.85rem; color: var(--text-light); }
+        .day-header .day-info h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.2px;
+            line-height: 1.3;
+        }
+        .day-header .day-info .day-date {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
 
         .difficulty {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: var(--r-full);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
-        .difficulty.easy { background: var(--easy-bg); color: var(--easy); }
-        .difficulty.medium { background: var(--medium-bg); color: var(--medium); }
-        .difficulty.hard { background: var(--hard-bg); color: var(--hard); }
+        .difficulty.easy   { background: var(--success-bg); color: var(--success); }
+        .difficulty.medium { background: var(--warning-bg); color: var(--warning); }
+        .difficulty.hard   { background: var(--danger-bg);  color: var(--danger); }
 
-        .day-body { padding: 20px 24px; }
+        .day-body { padding: 20px 22px 24px; }
 
-        /* ============ TIMELINE ============ */
-        .timeline { position: relative; padding-left: 24px; }
+        /* ================================================================
+           TIMELINE (with pulse on dots)
+           ================================================================ */
+        .timeline { position: relative; padding-left: 26px; }
         .timeline::before {
             content: '';
             position: absolute;
-            left: 7px; top: 0; bottom: 0;
+            left: 8px; top: 6px; bottom: 6px;
             width: 2px;
-            background: var(--timeline-line);
+            background: var(--outline-variant);
+            border-radius: 2px;
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 18px;
+            padding-bottom: 16px;
             display: flex;
-            gap: 16px;
+            gap: 14px;
+            animation: fadeSlideUp 0.4s var(--ease-decelerate) both;
         }
+
+        .day-card.active .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+        .day-card.active .timeline-item:nth-child(2) { animation-delay: 0.10s; }
+        .day-card.active .timeline-item:nth-child(3) { animation-delay: 0.15s; }
+        .day-card.active .timeline-item:nth-child(4) { animation-delay: 0.20s; }
+        .day-card.active .timeline-item:nth-child(5) { animation-delay: 0.25s; }
+        .day-card.active .timeline-item:nth-child(6) { animation-delay: 0.30s; }
+        .day-card.active .timeline-item:nth-child(7) { animation-delay: 0.35s; }
+        .day-card.active .timeline-item:nth-child(8) { animation-delay: 0.40s; }
+        .day-card.active .timeline-item:nth-child(9) { animation-delay: 0.45s; }
+        .day-card.active .timeline-item:nth-child(10) { animation-delay: 0.50s; }
 
         .timeline-item:last-child { padding-bottom: 0; }
 
         .timeline-item .time {
             flex-shrink: 0;
             width: 70px;
-            font-size: 0.8rem;
+            font-size: 0.76rem;
             font-weight: 700;
             color: var(--text-light);
             text-align: right;
-            padding-top: 2px;
+            padding-top: 3px;
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: -0.3px;
         }
 
         .timeline-item .dot {
             position: absolute;
-            left: -21px;
-            top: 6px;
+            left: -22px;
+            top: 7px;
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            border: 2px solid var(--card);
+            border: 2px solid var(--surface);
             box-shadow: 0 0 0 2px currentColor;
-            transition: border-color 0.3s;
+            transition: border-color 0.35s;
+        }
+
+        .timeline-item .dot.pulse::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            animation: pulseRing 2s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%   { transform: scale(0.8); opacity: 0.7; }
+            100% { transform: scale(1.8); opacity: 0; }
         }
 
         .timeline-item .content { flex: 1; min-width: 0; }
-        .timeline-item .content strong { font-weight: 600; }
+        .timeline-item .content strong { font-weight: 600; color: var(--text); }
         .timeline-item .content .note {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-light);
             margin-top: 2px;
         }
 
-        /* ============ TAGS ============ */
+        /* ================================================================
+           TAGS (Material chips)
+           ================================================================ */
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .tag {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: var(--r-full);
+            font-size: 0.76rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.2s var(--ease-standard);
             touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
+            min-height: 32px;
+            border: 1px solid transparent;
         }
 
-        .tag.maps { background: var(--tag-maps-bg); color: var(--tag-maps-text); }
-        .tag.maps:hover, .tag.maps:active { background: var(--tag-maps-text); color: white; }
+        .tag:active { transform: scale(0.95); }
 
-        .tag.hours { background: var(--tag-hours-bg); color: var(--tag-hours-text); }
-        .tag.cost { background: var(--tag-cost-bg); color: var(--tag-cost-text); }
-        .tag.tip { background: var(--tag-tip-bg); color: var(--tag-tip-text); }
+        .tag.maps { background: var(--info-bg); color: var(--info); border-color: transparent; }
+        .tag.maps:hover { background: var(--info-border); color: #fff; }
+        .tag.hours { background: var(--purple-bg); color: var(--purple); }
+        .tag.cost  { background: var(--warning-bg); color: var(--warning); }
+        .tag.tip   { background: var(--success-bg); color: var(--success); }
 
-        /* ============ COST BOX ============ */
+        /* ================================================================
+           COST BOX (Material tertiary container)
+           ================================================================ */
         .cost-box {
             display: flex;
             gap: 14px;
-            padding: 16px 20px;
+            padding: 16px 18px;
             background: var(--cost-bg);
-            border-radius: 12px;
+            border-radius: var(--r-md);
             border-left: 4px solid var(--cost-border);
             margin-top: 18px;
-            font-size: 0.92rem;
-            color: var(--cost-text);
+            font-size: 0.9rem;
+            color: var(--cost);
             align-items: flex-start;
-            transition: background 0.3s;
+            transition: background 0.35s, transform 0.25s var(--ease-standard);
+            position: relative;
+            overflow: hidden;
         }
 
+        .cost-box:hover { transform: translateX(2px); }
+
         .cost-box > i {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--cost-border);
             margin-top: 2px;
             flex-shrink: 0;
+            animation: coinSpin 4s ease-in-out infinite;
         }
 
-        .cost-box .cost-main {
-            font-weight: 700;
-            font-size: 1rem;
+        @keyframes coinSpin {
+            0%, 80%, 100% { transform: rotate(0); }
+            85%           { transform: rotate(15deg); }
+            90%           { transform: rotate(-12deg); }
+            95%           { transform: rotate(8deg); }
         }
 
+        .cost-box .cost-main { font-weight: 700; font-size: 1rem; }
         .cost-box .cost-details {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             opacity: 0.85;
-            margin-top: 6px;
+            margin-top: 5px;
             line-height: 1.5;
         }
 
-        /* ============ INFO BOXES ============ */
+        /* ================================================================
+           INFO BOXES (Material tonal containers)
+           ================================================================ */
         .info-box {
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-top: 16px;
-            font-size: 0.9rem;
+            border-radius: var(--r-md);
+            padding: 14px 18px;
+            margin-top: 14px;
+            font-size: 0.88rem;
             display: flex;
             gap: 12px;
             align-items: flex-start;
-            transition: background 0.3s;
+            transition: background 0.35s, transform 0.2s;
+            animation: fadeSlideUp 0.4s var(--ease-decelerate) both;
+            animation-delay: 0.1s;
         }
 
         .info-box > i {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-top: 2px;
             flex-shrink: 0;
         }
 
-        .info-box.warning { background: var(--warning-bg); border-left: 4px solid var(--warning-border); color: var(--warning-text); }
-        .info-box.danger { background: var(--danger-bg); border-left: 4px solid var(--danger-border); color: var(--danger-text); }
-        .info-box.success { background: var(--success-bg); border-left: 4px solid var(--success-border); color: var(--success-text); }
-        .info-box.info { background: var(--info-bg); border-left: 4px solid var(--info-border); color: var(--info-text); }
-        .info-box.purple { background: var(--purple-bg); border-left: 4px solid var(--purple-border); color: var(--purple-text); }
+        .info-box.warning { background: var(--warning-bg); border-left: 4px solid var(--warning-border); color: var(--warning); }
+        .info-box.danger  { background: var(--danger-bg);  border-left: 4px solid var(--danger-border);  color: var(--danger); }
+        .info-box.success { background: var(--success-bg); border-left: 4px solid var(--success-border); color: var(--success); }
+        .info-box.info    { background: var(--info-bg);    border-left: 4px solid var(--info-border);    color: var(--info); }
+        .info-box.purple  { background: var(--purple-bg);  border-left: 4px solid var(--purple-border);  color: var(--purple); }
 
-        .info-box a {
-            color: inherit;
-            text-decoration: underline;
-            font-weight: 600;
-        }
+        .info-box a { color: inherit; text-decoration: underline; font-weight: 600; }
 
-        /* ============ SECTION TITLES ============ */
+        /* ================================================================
+           SECTION TITLES
+           ================================================================ */
         .section-title {
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             color: var(--text-light);
             font-weight: 700;
             margin: 22px 0 12px;
@@ -568,10 +878,12 @@
             gap: 6px;
         }
 
-        /* ============ SHOPPING ============ */
+        /* ================================================================
+           SHOPPING LIST
+           ================================================================ */
         .shopping-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 8px;
             margin-top: 8px;
         }
@@ -580,133 +892,368 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
-            background: var(--shopping-bg);
-            border-radius: 10px;
-            font-size: 0.85rem;
-            transition: background 0.3s;
+            padding: 9px 12px;
+            background: var(--surface-2);
+            border-radius: var(--r-xs);
+            font-size: 0.83rem;
+            transition: background 0.2s, transform 0.2s;
+            color: var(--text-medium);
         }
 
-        .shopping-item i { color: var(--text-light); font-size: 0.8rem; }
+        .shopping-item:hover {
+            background: var(--surface-3);
+            transform: translateX(3px);
+        }
 
-        /* ============ ROUTE LINK ============ */
+        .shopping-item i { color: var(--text-light); font-size: 0.75rem; }
+
+        /* ================================================================
+           ROUTE LINK (filled tonal button)
+           ================================================================ */
         .route-link {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: var(--tab-active-bg);
-            color: var(--tab-active-text);
-            padding: 9px 18px;
-            border-radius: 50px;
+            gap: 8px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 10px 20px;
+            border-radius: var(--r-full);
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-top: 12px;
-            transition: all 0.2s;
+            margin-top: 14px;
+            transition: all 0.25s var(--ease-standard);
             touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
+            min-height: 40px;
+            box-shadow: var(--elev-1);
         }
 
-        .route-link:hover, .route-link:active {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-hover);
+        .route-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--elev-3);
+        }
+        .route-link:active { transform: translateY(0) scale(0.98); }
+
+        /* ================================================================
+           FAB (Floating Action Buttons)
+           ================================================================ */
+        .fab-container {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 500;
+            pointer-events: none;
         }
 
-        /* ============ SUMMARY ============ */
-        .summary-section {
-            background: var(--card);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 28px;
-            margin-bottom: 30px;
-            transition: background 0.3s;
+        .fab-container > * { pointer-events: auto; }
+
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            border: none;
+            background: var(--surface-3);
+            color: var(--text);
+            font-size: 1.15rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--elev-3);
+            transition: transform 0.25s var(--ease-emphasized),
+                        box-shadow 0.25s,
+                        background 0.25s;
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            animation: fabIn 0.5s 0.4s var(--ease-emphasized) both;
         }
 
-        .summary-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
+        .fab.primary {
+            background: var(--south);
+            color: #fff;
+        }
+
+        @keyframes fabIn {
+            from { opacity: 0; transform: scale(0.4) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .fab:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: var(--elev-4);
+        }
+
+        .fab:active {
+            transform: scale(0.94);
+            box-shadow: var(--elev-2);
+        }
+
+        .fab .fab-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            border-radius: 10px;
+            background: var(--danger);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg);
+        }
+
+        /* ================================================================
+           RIPPLE
+           ================================================================ */
+        .ripple-host { position: relative; overflow: hidden; }
+
+        .ripple-ink {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--ripple-color);
+            transform: scale(0);
+            opacity: 1;
+            pointer-events: none;
+            animation: rippleExpand 0.65s var(--ease-decelerate) forwards;
+        }
+
+        @keyframes rippleExpand {
+            to { transform: scale(2.2); opacity: 0; }
+        }
+
+        /* ================================================================
+           DIALOG / BOTTOM SHEET (Tips)
+           ================================================================ */
+        dialog.tips-dialog {
+            border: none;
+            padding: 0;
+            background: transparent;
+            max-width: 560px;
+            width: calc(100% - 32px);
+            margin: auto;
+            color: var(--text);
+        }
+
+        dialog.tips-dialog::backdrop {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            animation: backdropIn 0.3s ease;
+        }
+
+        @keyframes backdropIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        dialog.tips-dialog[open] .tips-panel {
+            animation: dialogIn 0.4s var(--ease-emphasized);
+        }
+
+        @keyframes dialogIn {
+            from { opacity: 0; transform: translateY(24px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .tips-panel {
+            background: var(--surface);
+            border-radius: var(--r-xl);
+            box-shadow: var(--elev-6);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+            transition: background 0.35s;
+        }
+
+        .tips-header {
+            padding: 22px 24px 16px;
+            background: linear-gradient(135deg, var(--south-container), var(--north-container));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tips-header h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+        }
+
+        .tips-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.06);
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            touch-action: manipulation;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tips-close:hover { background: rgba(0,0,0,0.12); }
+        .tips-close:active { transform: scale(0.92); }
+
+        .tips-body {
+            padding: 8px 20px 22px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tip-group {
+            margin-top: 18px;
+        }
+
+        .tip-group h3 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
+        .tip-group h3 i {
+            color: var(--south);
+            font-size: 0.95rem;
         }
 
-        .summary-card {
-            padding: 16px 20px;
-            border-radius: 12px;
-            font-size: 0.9rem;
+        .tip-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 14px;
+            background: var(--surface-1);
+            border-radius: var(--r-sm);
+            margin-bottom: 8px;
+            font-size: 0.87rem;
+            line-height: 1.5;
+            color: var(--text-medium);
+            transition: background 0.2s, transform 0.2s;
+            animation: fadeSlideUp 0.35s var(--ease-decelerate) both;
         }
 
-        .summary-card.south {
-            background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(230,126,34,0.05));
-            border-left: 4px solid var(--south);
-        }
-        .summary-card.north {
-            background: linear-gradient(135deg, rgba(41,128,185,0.12), rgba(41,128,185,0.05));
-            border-left: 4px solid var(--north);
-        }
-        .summary-card.transition-card {
-            background: linear-gradient(135deg, rgba(142,68,173,0.12), rgba(142,68,173,0.05));
-            border-left: 4px solid var(--transition);
+        .tip-item:nth-child(2) { animation-delay: 0.05s; }
+        .tip-item:nth-child(3) { animation-delay: 0.10s; }
+        .tip-item:nth-child(4) { animation-delay: 0.15s; }
+
+        .tip-item:hover {
+            background: var(--surface-2);
+            transform: translateX(3px);
         }
 
-        .summary-card h4 { font-weight: 700; margin-bottom: 6px; }
-        .summary-card p { font-size: 0.85rem; color: var(--text-light); }
+        .tip-item i.tip-icon {
+            color: var(--north);
+            font-size: 1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
 
-        /* ============ FOOTER ============ */
+        .tip-item strong { color: var(--text); font-weight: 600; }
+
+        /* ================================================================
+           FOOTER
+           ================================================================ */
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 30px 20px 100px;
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
 
-        /* ============ RESPONSIVE ============ */
+        /* ================================================================
+           RESPONSIVE
+           ================================================================ */
         @media (max-width: 600px) {
             body { padding: 12px; }
-            .header { padding: 28px 16px; }
-            .header h1 { font-size: 1.6rem; }
-            .header .subtitle { font-size: 0.95rem; }
-            .day-header { padding: 16px; gap: 12px; }
-            .day-body { padding: 16px; }
-            .timeline { padding-left: 20px; }
-            .timeline-item .time { width: 55px; font-size: 0.72rem; }
-            .timeline-item .dot { left: -17px; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .summary-section { padding: 20px 16px; }
-            .theme-toggle { width: 40px; height: 40px; font-size: 0.9rem; }
+            .header { padding: 36px 16px 28px; }
+            .day-header { padding: 16px 18px; gap: 12px; }
+            .day-header .day-num { width: 46px; height: 46px; font-size: 1.05rem; }
+            .day-body { padding: 18px 18px 22px; }
+            .timeline { padding-left: 22px; }
+            .timeline-item .time { width: 56px; font-size: 0.7rem; }
+            .timeline-item .dot { left: -18px; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .summary-section { padding: 18px 16px; }
+            .theme-toggle, .header-icon-btn { width: 40px; height: 40px; font-size: 0.95rem; top: 12px; }
+            .theme-toggle { right: 12px; }
+            .header-icon-btn { left: 12px; }
+            .fab { width: 52px; height: 52px; border-radius: 16px; font-size: 1.05rem; }
+            .fab-container { right: 14px; bottom: 14px; gap: 10px; }
+            .summary-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         @media print {
-            .tabs, .route-link, .tag.maps, .theme-toggle { display: none; }
-            .day-card { display: block !important; break-inside: avoid; }
-            .header { background: white; color: black; }
-            .header::before { display: none; }
+            .tabs, .route-link, .tag.maps, .theme-toggle, .fab-container,
+            .scroll-progress, .header-icon-btn { display: none !important; }
+            .day-card { display: block !important; break-inside: avoid; page-break-inside: avoid; }
+            .header { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+            .header::before { display: none !important; }
+            body { background: #fff !important; padding: 0; }
+            .day-card { box-shadow: none !important; border: 1px solid #ddd; }
         }
     </style>
 </head>
 <body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <div class="container">
 
-    <div class="header">
-        <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+        <button class="header-icon-btn ripple-host" id="tipsBtn" aria-label="Советы путешественнику" title="Советы">
+            <i class="fas fa-lightbulb"></i>
+        </button>
+        <button class="theme-toggle ripple-host" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
             <i class="fas fa-moon"></i>
         </button>
         <h1>🌴 Тенерифе · 12 ночей</h1>
-        <div class="subtitle">Интерактивный план · Пара · Юг → Север → Вылет</div>
+        <p class="subtitle">Интерактивный план · Пара · Юг → Север → Вылет</p>
         <div class="dates">
             <i class="fas fa-plane-departure"></i>
             <span>18 — 30 октября 2026</span>
             <i class="fas fa-plane-arrival"></i>
         </div>
-    </div>
+    </header>
 
-    <!-- STATS -->
-    <div class="stats-bar">
+    <!-- ============ STATS ============ -->
+    <section class="stats-bar">
         <div class="stat-card">
             <div class="icon">🌞</div>
             <div class="value">6</div>
@@ -727,49 +1274,51 @@
             <div class="value">~€700</div>
             <div class="label">Активности / 2 чел</div>
         </div>
-    </div>
+    </section>
 
-    <!-- HOTELS -->
-    <div class="summary-section">
+    <!-- ============ HOTELS ============ -->
+    <section class="summary-section">
         <h3><i class="fas fa-hotel" style="color: var(--south);"></i> Ваши базы проживания</h3>
         <div class="summary-grid">
             <div class="summary-card south">
                 <h4>🌞 Юг · 18–24 октября</h4>
                 <p><strong>Castle Harbour</strong><br>Av. San Francisco, 12, 38650 Los Cristianos</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Av.+San+Francisco+12+Los+Cristianos+Tenerife" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Av.+San+Francisco+12+Los+Cristianos+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
             </div>
             <div class="summary-card north">
                 <h4>🌿 Север · 24–30 октября</h4>
                 <p><strong>Coral Teide Mar</strong><br>C. Aceviño, 6, 38400 Puerto de la Cruz</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=C.+Aceviño+6+Puerto+de+la+Cruz+Tenerife" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=C.+Aceviño+6+Puerto+de+la+Cruz+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
             </div>
             <div class="summary-card transition-card">
                 <h4>🚗 Аренда авто · PlusCar</h4>
                 <p>Tenerife South Airport (TFS)<br>Получение: 18.10 в 11:00<br>Сдача: 30.10 в 15:00</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> TFS</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps ripple-host" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> TFS</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- TABS -->
+    <!-- ============ TABS ============ -->
     <div class="tabs" id="tabs" role="tablist">
-        <button type="button" class="tab active" data-day="0"><span class="tab-icon">🛬</span> 18 окт</button>
-        <button type="button" class="tab" data-day="1"><span class="tab-icon">🛒</span> 19 окт</button>
-        <button type="button" class="tab" data-day="2"><span class="tab-icon">🌋</span> 20 окт</button>
-        <button type="button" class="tab" data-day="3"><span class="tab-icon">🐋</span> 21 окт</button>
-        <button type="button" class="tab" data-day="4"><span class="tab-icon">🏔️</span> 22 окт</button>
-        <button type="button" class="tab" data-day="5"><span class="tab-icon">🏘️</span> 23 окт</button>
-        <button type="button" class="tab" data-day="6"><span class="tab-icon">🚙</span> 24 окт</button>
-        <button type="button" class="tab" data-day="7"><span class="tab-icon">🏛️</span> 25 окт</button>
-        <button type="button" class="tab" data-day="8"><span class="tab-icon">🦜</span> 26 окт</button>
-        <button type="button" class="tab" data-day="9"><span class="tab-icon">🌳</span> 27 окт</button>
-        <button type="button" class="tab" data-day="10"><span class="tab-icon">🏡</span> 28 окт</button>
-        <button type="button" class="tab" data-day="11"><span class="tab-icon">📦</span> 29 окт</button>
-        <button type="button" class="tab" data-day="12"><span class="tab-icon">✈️</span> 30 окт</button>
+        <button type="button" class="tab ripple-host active" data-day="0"><span class="tab-icon">🛬</span> 18 окт</button>
+        <button type="button" class="tab ripple-host" data-day="1"><span class="tab-icon">🛒</span> 19 окт</button>
+        <button type="button" class="tab ripple-host" data-day="2"><span class="tab-icon">🌋</span> 20 окт</button>
+        <button type="button" class="tab ripple-host" data-day="3"><span class="tab-icon">🐋</span> 21 окт</button>
+        <button type="button" class="tab ripple-host" data-day="4"><span class="tab-icon">🏔️</span> 22 окт</button>
+        <button type="button" class="tab ripple-host" data-day="5"><span class="tab-icon">🏘️</span> 23 окт</button>
+        <button type="button" class="tab ripple-host" data-day="6"><span class="tab-icon">🚙</span> 24 окт</button>
+        <button type="button" class="tab ripple-host" data-day="7"><span class="tab-icon">🏛️</span> 25 окт</button>
+        <button type="button" class="tab ripple-host" data-day="8"><span class="tab-icon">🦜</span> 26 окт</button>
+        <button type="button" class="tab ripple-host" data-day="9"><span class="tab-icon">🌳</span> 27 окт</button>
+        <button type="button" class="tab ripple-host" data-day="10"><span class="tab-icon">🏡</span> 28 окт</button>
+        <button type="button" class="tab ripple-host" data-day="11"><span class="tab-icon">📦</span> 29 окт</button>
+        <button type="button" class="tab ripple-host" data-day="12"><span class="tab-icon">✈️</span> 30 окт</button>
     </div>
 
-    <!-- ==================== DAY 0 ==================== -->
+    <!-- ============ DAYS ============ -->
     <div id="days-wrapper">
+
+    <!-- DAY 0 -->
     <div class="day-card active" id="day-0">
         <div class="day-header">
             <div class="day-num" style="background: var(--flight);">18</div>
@@ -777,29 +1326,29 @@
                 <h2>Прилёт, авто и заселение</h2>
                 <div class="day-date">Воскресенье · 18 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box warning">
                 <i class="fas fa-exclamation-triangle"></i>
-                <div><strong>Mercadona закрыта по воскресеньям!</strong> Купите минимальный набор продуктов в аэропорту или в работающем магазине по дороге. Основная закупка — завтра.</div>
+                <div><strong>Mercadona закрыта по воскресеньям!</strong> Купите минимальный набор в аэропорту или в работающем магазине по дороге. Основная закупка — завтра.</div>
             </div>
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="time">09:20</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="dot pulse" style="color: var(--flight); background: var(--flight);"></div>
                     <div class="content"><strong>Прилёт в TFS</strong><div class="note">Паспортный контроль, багаж</div></div>
                 </div>
                 <div class="timeline-item">
                     <div class="time">10:30–11:00</div>
-                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
+                    <div class="dot" style="color: var(--transition-c); background: var(--transition-c);"></div>
                     <div class="content"><strong>Переход к офису PlusCar</strong><div class="note">Парковка аэропорта Tenerife South</div></div>
                 </div>
                 <div class="timeline-item">
                     <div class="time">11:00–11:45</div>
-                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
+                    <div class="dot" style="color: var(--transition-c); background: var(--transition-c);"></div>
                     <div class="content"><strong>Получение автомобиля</strong><div class="note">Осмотр, фотофиксация, проверка топлива</div></div>
                 </div>
                 <div class="timeline-item">
@@ -824,7 +1373,7 @@
                 </div>
                 <div class="timeline-item">
                     <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="dot" style="color: var(--text-light); background: var(--text-light);"></div>
                     <div class="content"><strong>Ужин с вином</strong><div class="note">Домашний: хлеб, сыр, нарезка, салат</div></div>
                 </div>
             </div>
@@ -838,13 +1387,13 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/dir/?api=1&origin=Tenerife+South+Airport&destination=Av.+San+Francisco+12+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> TFS → Los Cristianos</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Castle+Harbour+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-hotel"></i> Castle Harbour</a>
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tenerife+South+Airport&destination=Av.+San+Francisco+12+Los+Cristianos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-route"></i> TFS → Los Cristianos</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Castle+Harbour+Los+Cristianos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-hotel"></i> Castle Harbour</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 1 ==================== -->
+    <!-- DAY 1 -->
     <div class="day-card" id="day-1">
         <div class="day-header">
             <div class="day-num" style="background: var(--south);">19</div>
@@ -852,7 +1401,7 @@
                 <h2>Большая закупка и южное побережье</h2>
                 <div class="day-date">Понедельник · 19 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box success">
@@ -862,36 +1411,12 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">08:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Подъём, завтрак</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:30–10:45</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Mercadona: большая закупка</strong><div class="note">C.C. Mencey · Открыто 9:00–21:30</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">11:30–13:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Playa de las Vistas и набережная</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:30–16:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Плайя-де-лас-Америкас и Playa del Camisón</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">16:30–18:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Ла-Калета</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Papas arrugadas, mojo, рыба и салат</div>
-                </div>
+                <div class="timeline-item"><div class="time">08:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Подъём, завтрак</strong></div></div>
+                <div class="timeline-item"><div class="time">09:30–10:45</div><div class="dot pulse" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Mercadona: большая закупка</strong><div class="note">C.C. Mencey · Открыто 9:00–21:30</div></div></div>
+                <div class="timeline-item"><div class="time">11:30–13:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Playa de las Vistas и набережная</strong></div></div>
+                <div class="timeline-item"><div class="time">14:30–16:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Плайя-де-лас-Америкас и Playa del Camisón</strong></div></div>
+                <div class="timeline-item"><div class="time">16:30–18:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Ла-Калета</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Papas arrugadas, mojo, рыба и салат</div></div>
             </div>
 
             <div class="cost-box">
@@ -902,7 +1427,7 @@
                 </div>
             </div>
 
-            <div class="section-title"><i class="fas fa-shopping-cart"></i> Список закупки (на 4–5 дней)</div>
+            <div class="section-title"><i class="fas fa-shopping-cart"></i> Список закупки</div>
             <div class="shopping-grid">
                 <div class="shopping-item"><i class="fas fa-check"></i> Овсянка, яйца, хлеб</div>
                 <div class="shopping-item"><i class="fas fa-check"></i> Йогурты, кофе, молоко</div>
@@ -917,13 +1442,13 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+C.C.+Mencey+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Mercadona</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+las+Vistas+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Playa de las Vistas</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+C.C.+Mencey+Los+Cristianos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Mercadona</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+las+Vistas+Los+Cristianos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-umbrella-beach"></i> Playa de las Vistas</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 2 ==================== -->
+    <!-- DAY 2 -->
     <div class="day-card" id="day-2">
         <div class="day-header">
             <div class="day-num" style="background: var(--south);">20</div>
@@ -931,7 +1456,7 @@
                 <h2>Тейде · Национальный парк</h2>
                 <div class="day-date">Вторник · 20 октября 2026</div>
             </div>
-            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+            <div class="difficulty hard"><i class="fas fa-bolt" style="font-size:8px;"></i> Сложный</div>
         </div>
         <div class="day-body">
             <div class="info-box info">
@@ -941,31 +1466,11 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">06:45</div>
-                    <div class="dot" style="color: var(--hard); background: var(--hard);"></div>
-                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:00</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Вилафлор</strong><div class="note">Живописная деревня по пути</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–13:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Национальный парк Тейде</strong><div class="note">Смотровые, лавовые поля, пикник</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:15–15:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Канатная дорога</strong><div class="note">Только при наличии брони</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Омлет с картофелем и салат</div>
-                </div>
+                <div class="timeline-item"><div class="time">06:45</div><div class="dot pulse" style="color: var(--danger); background: var(--danger);"></div><div class="content"><strong>Подъём, завтрак, выезд</strong></div></div>
+                <div class="timeline-item"><div class="time">09:00</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Вилафлор</strong><div class="note">Живописная деревня по пути</div></div></div>
+                <div class="timeline-item"><div class="time">10:00–13:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Национальный парк Тейде</strong><div class="note">Смотровые, лавовые поля, пикник</div></div></div>
+                <div class="timeline-item"><div class="time">14:15–15:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Канатная дорога</strong><div class="note">Только при наличии брони</div></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Омлет с картофелем и салат</div></div>
             </div>
 
             <div class="cost-box">
@@ -977,8 +1482,8 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Teide+Cable+Car+Base+Station" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Канатная дорога</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Nacional+del+Teide" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-mountain"></i> Нац. парк</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Teide+Cable+Car+Base+Station" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Канатная дорога</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Nacional+del+Teide" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-mountain"></i> Нац. парк</a>
                 <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€82 канатка / 2</span>
                 <span class="tag hours"><i class="fas fa-clock"></i> 09:00–18:40</span>
             </div>
@@ -990,7 +1495,7 @@
         </div>
     </div>
 
-    <!-- ==================== DAY 3 ==================== -->
+    <!-- DAY 3 -->
     <div class="day-card" id="day-3">
         <div class="day-header">
             <div class="day-num" style="background: var(--south);">21</div>
@@ -998,7 +1503,7 @@
                 <h2>Киты и дельфины</h2>
                 <div class="day-date">Среда · 21 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box info">
@@ -1008,26 +1513,10 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">08:00–09:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Завтрак, выезд к порту, регистрация</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–13:00</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Морская экскурсия</strong><div class="note">Киты, дельфины, купание</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00–17:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Отдых и пляж</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Рыба, картофель, салат и mojo</div>
-                </div>
+                <div class="timeline-item"><div class="time">08:00–09:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Завтрак, выезд к порту, регистрация</strong></div></div>
+                <div class="timeline-item"><div class="time">10:00–13:00</div><div class="dot pulse" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Морская экскурсия</strong><div class="note">Киты, дельфины, купание</div></div></div>
+                <div class="timeline-item"><div class="time">15:00–17:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Отдых и пляж</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рыба, картофель, салат и mojo</div></div>
             </div>
 
             <div class="cost-box">
@@ -1039,14 +1528,14 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Puerto+de+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-anchor"></i> Порт Лос-Кристианос</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Puerto+de+Los+Cristianos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-anchor"></i> Порт Лос-Кристианос</a>
                 <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€80–100 / 2</span>
                 <span class="tag hours"><i class="fas fa-clock"></i> ~3 часа</span>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 4 ==================== -->
+    <!-- DAY 4 -->
     <div class="day-card" id="day-4">
         <div class="day-header">
             <div class="day-num" style="background: var(--south);">22</div>
@@ -1054,36 +1543,16 @@
                 <h2>Лос-Гигантес и Гарачико</h2>
                 <div class="day-date">Четверг · 22 октября 2026</div>
             </div>
-            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+            <div class="difficulty medium"><i class="fas fa-bolt" style="font-size:8px;"></i> Средний</div>
         </div>
         <div class="day-body">
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">07:30–08:45</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–11:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Лос-Гигантес</strong><div class="note">Утёсы, смотровые площадки</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">11:30–13:00</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Puerto de Santiago и Алькала</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00–16:30</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Гарачико</strong><div class="note">Старый город, площадь</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Рис с курицей и овощами</div>
-                </div>
+                <div class="timeline-item"><div class="time">07:30–08:45</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Подъём, завтрак, выезд</strong></div></div>
+                <div class="timeline-item"><div class="time">10:00–11:30</div><div class="dot pulse" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Лос-Гигантес</strong><div class="note">Утёсы, смотровые площадки</div></div></div>
+                <div class="timeline-item"><div class="time">11:30–13:00</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Puerto de Santiago и Алькала</strong></div></div>
+                <div class="timeline-item"><div class="time">15:00–16:30</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Гарачико</strong><div class="note">Старый город, площадь</div></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рис с курицей и овощами</div></div>
             </div>
 
             <div class="cost-box">
@@ -1095,13 +1564,13 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Los+Gigantes+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-water"></i> Лос-Гигантес</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Гарачико</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Los+Gigantes+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-water"></i> Лос-Гигантес</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-city"></i> Гарачико</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 5 ==================== -->
+    <!-- DAY 5 -->
     <div class="day-card" id="day-5">
         <div class="day-header">
             <div class="day-num" style="background: var(--south);">23</div>
@@ -1109,45 +1578,25 @@
                 <h2>Маска или Эль-Медано</h2>
                 <div class="day-date">Пятница · 23 октября 2026</div>
             </div>
-            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+            <div class="difficulty medium"><i class="fas fa-bolt" style="font-size:8px;"></i> Средний</div>
         </div>
         <div class="day-body">
             <div class="info-box purple">
                 <i class="fas fa-hiking"></i>
-                <div><strong>Маска:</strong> Деревня открыта всегда. Полный спуск в ущелье требует разрешения и бронирования. Для обзора достаточно деревни и смотровых.</div>
+                <div><strong>Маска:</strong> Деревня открыта всегда. Полный спуск в ущелье требует разрешения. Для обзора достаточно деревни и смотровых.</div>
             </div>
 
             <div class="section-title"><i class="fas fa-clock"></i> Вариант A: Маска</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">07:30–08:45</div>
-                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
-                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:30–12:30</div>
-                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
-                    <div class="content"><strong>Деревня Маска и смотровые</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">13:30–16:00</div>
-                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
-                    <div class="content"><strong>Обратная дорога и остановки</strong></div>
-                </div>
+                <div class="timeline-item"><div class="time">07:30–08:45</div><div class="dot" style="color: var(--warning); background: var(--warning);"></div><div class="content"><strong>Подъём, завтрак, выезд</strong></div></div>
+                <div class="timeline-item"><div class="time">10:30–12:30</div><div class="dot pulse" style="color: var(--warning); background: var(--warning);"></div><div class="content"><strong>Деревня Маска и смотровые</strong></div></div>
+                <div class="timeline-item"><div class="time">13:30–16:00</div><div class="dot" style="color: var(--warning); background: var(--warning);"></div><div class="content"><strong>Обратная дорога</strong></div></div>
             </div>
 
             <div class="section-title"><i class="fas fa-clock"></i> Вариант B: Эль-Медано</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">10:00–13:00</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>Эль-Медано</strong><div class="note">Серферский городок, длинный пляж</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:00–16:00</div>
-                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
-                    <div class="content"><strong>La Tejita и Montaña Roja</strong></div>
-                </div>
+                <div class="timeline-item"><div class="time">10:00–13:00</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>Эль-Медано</strong><div class="note">Серферский городок, длинный пляж</div></div></div>
+                <div class="timeline-item"><div class="time">14:00–16:00</div><div class="dot" style="color: var(--south); background: var(--south);"></div><div class="content"><strong>La Tejita и Montaña Roja</strong></div></div>
             </div>
 
             <div class="cost-box">
@@ -1159,60 +1608,36 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Masca+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Маска</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=El+Medano+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Эль-Медано</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Masca+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Маска</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=El+Medano+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-umbrella-beach"></i> Эль-Медано</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 6 ==================== -->
+    <!-- DAY 6 -->
     <div class="day-card" id="day-6">
         <div class="day-header">
-            <div class="day-num" style="background: var(--transition);">24</div>
+            <div class="day-num" style="background: var(--transition-c);">24</div>
             <div class="day-info">
                 <h2>Переезд на север · Ла-Лагуна</h2>
                 <div class="day-date">Суббота · 24 октября 2026</div>
             </div>
-            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+            <div class="difficulty medium"><i class="fas fa-bolt" style="font-size:8px;"></i> Средний</div>
         </div>
         <div class="day-body">
             <div class="info-box warning">
                 <i class="fas fa-shopping-cart"></i>
-                <div><strong>Закупка на севере сегодня!</strong> Завтра, 25 октября — воскресенье, Mercadona закрыта. Купите продукты на 5–6 дней после заселения.</div>
+                <div><strong>Закупка на севере сегодня!</strong> Завтра — воскресенье, Mercadona закрыта. Купите продукты на 5–6 дней после заселения.</div>
             </div>
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">09:30</div>
-                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
-                    <div class="content"><strong>Выезд из Лос-Кристианоса</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:45–12:45</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Ла-Лагуна</strong><div class="note">ЮНЕСКО, старый центр</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">13:30–15:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Переезд в Пуэрто-де-ла-Крус</strong><div class="note">~40 мин</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00–16:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Заселение в Coral Teide Mar</strong><div class="note">C. Aceviño, 6</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">16:00–17:15</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Mercadona: большая закупка</strong><div class="note">Av. los Cachazos · до 21:30</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">18:30–19:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Plaza del Charco</strong></div>
-                </div>
+                <div class="timeline-item"><div class="time">09:30</div><div class="dot pulse" style="color: var(--transition-c); background: var(--transition-c);"></div><div class="content"><strong>Выезд из Лос-Кристианоса</strong></div></div>
+                <div class="timeline-item"><div class="time">10:45–12:45</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Ла-Лагуна</strong><div class="note">ЮНЕСКО, старый центр</div></div></div>
+                <div class="timeline-item"><div class="time">13:30–15:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Переезд в Пуэрто-де-ла-Крус</strong><div class="note">~40 мин</div></div></div>
+                <div class="timeline-item"><div class="time">15:00–16:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Заселение в Coral Teide Mar</strong></div></div>
+                <div class="timeline-item"><div class="time">16:00–17:15</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Mercadona: большая закупка</strong></div></div>
+                <div class="timeline-item"><div class="time">18:30–19:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Plaza del Charco</strong></div></div>
             </div>
 
             <div class="cost-box">
@@ -1239,13 +1664,13 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/dir/?api=1&origin=Los+Cristianos&destination=Puerto+de+la+Cruz&waypoints=La+Laguna" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> Los Cristianos → La Laguna → Puerto Cruz</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+Av.+los+Cachazos+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-shopping-cart"></i> Mercadona</a>
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Los+Cristianos&destination=Puerto+de+la+Cruz&waypoints=La+Laguna" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-route"></i> Los Cristianos → La Laguna → Puerto Cruz</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+Av.+los+Cachazos+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-shopping-cart"></i> Mercadona</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 7 ==================== -->
+    <!-- DAY 7 -->
     <div class="day-card" id="day-7">
         <div class="day-header">
             <div class="day-num" style="background: var(--north);">25</div>
@@ -1253,7 +1678,7 @@
                 <h2>Пуэрто-де-ла-Крус пешком</h2>
                 <div class="day-date">Воскресенье · 25 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box success">
@@ -1263,36 +1688,12 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">09:00–10:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Завтрак, выход пешком</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–12:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Старый центр и Plaza del Charco</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">12:00–13:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Набережная</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">16:00–18:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Lago Martiánez</strong><div class="note">Бассейны с морской водой</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">18:00–19:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Playa Jardín</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Тортилья, салат, козий сыр, хлеб, оливки</div>
-                </div>
+                <div class="timeline-item"><div class="time">09:00–10:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Завтрак, выход пешком</strong></div></div>
+                <div class="timeline-item"><div class="time">10:00–12:00</div><div class="dot pulse" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Старый центр и Plaza del Charco</strong></div></div>
+                <div class="timeline-item"><div class="time">12:00–13:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Набережная</strong></div></div>
+                <div class="timeline-item"><div class="time">16:00–18:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Lago Martiánez</strong><div class="note">Бассейны с морской водой</div></div></div>
+                <div class="timeline-item"><div class="time">18:00–19:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Playa Jardín</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Тортилья, салат, козий сыр, хлеб, оливки</div></div>
             </div>
 
             <div class="cost-box">
@@ -1304,15 +1705,15 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Plaza+del+Charco+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Plaza del Charco</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Lago+Martianez+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-swimming-pool"></i> Lago Martiánez</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Plaza+del+Charco+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Plaza del Charco</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lago+Martianez+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-swimming-pool"></i> Lago Martiánez</a>
                 <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€5,5 / чел</span>
                 <span class="tag hours"><i class="fas fa-clock"></i> 10:00–19:00</span>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 8 ==================== -->
+    <!-- DAY 8 -->
     <div class="day-card" id="day-8">
         <div class="day-header">
             <div class="day-num" style="background: var(--north);">26</div>
@@ -1320,7 +1721,7 @@
                 <h2>Лоро-парк</h2>
                 <div class="day-date">Понедельник · 26 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box info">
@@ -1330,26 +1731,10 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">08:00–09:15</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Завтрак, выезд, парковка</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–16:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Лоро-парк</strong><div class="note">Шоу, животные, океанариум</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">18:30–19:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Playa Jardín или Punta Brava</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Паста с тунцом или рис с овощами</div>
-                </div>
+                <div class="timeline-item"><div class="time">08:00–09:15</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Завтрак, выезд, парковка</strong></div></div>
+                <div class="timeline-item"><div class="time">10:00–16:00</div><div class="dot pulse" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Лоро-парк</strong><div class="note">Шоу, животные, океанариум</div></div></div>
+                <div class="timeline-item"><div class="time">18:30–19:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Playa Jardín или Punta Brava</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Паста с тунцом или рис с овощами</div></div>
             </div>
 
             <div class="cost-box">
@@ -1361,7 +1746,7 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Loro+Parque+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Лоро-парк</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Loro+Parque+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Лоро-парк</a>
                 <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€42 / чел</span>
                 <span class="tag hours"><i class="fas fa-clock"></i> 09:30–17:30</span>
             </div>
@@ -1373,7 +1758,7 @@
         </div>
     </div>
 
-    <!-- ==================== DAY 9 ==================== -->
+    <!-- DAY 9 -->
     <div class="day-card" id="day-9">
         <div class="day-header">
             <div class="day-num" style="background: var(--north);">27</div>
@@ -1381,46 +1766,22 @@
                 <h2>Анага · Древний лес</h2>
                 <div class="day-date">Вторник · 27 октября 2026</div>
             </div>
-            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+            <div class="difficulty hard"><i class="fas fa-bolt" style="font-size:8px;"></i> Сложный</div>
         </div>
         <div class="day-body">
             <div class="info-box info">
                 <i class="fas fa-tree"></i>
-                <div><strong>Парк Анага</strong> открыт круглосуточно. Визит-центр Cruz del Carmen: 09:30–16:00 (окт–июнь). Вход бесплатный.</div>
+                <div><strong>Парк Анага</strong> открыт круглосуточно. Визит-центр Cruz del Carmen: 09:30–16:00. Вход бесплатный.</div>
             </div>
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">07:00–08:15</div>
-                    <div class="dot" style="color: var(--hard); background: var(--hard);"></div>
-                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:30–11:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Cruz del Carmen</strong><div class="note">Визит-центр, начало треккинга</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">11:00–12:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Pico del Inglés</strong><div class="note">Смотровая площадка</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">13:00–14:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Таганана и пикник</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:00–15:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Playa de Benijo</strong><div class="note">Дикий пляж с чёрным песком</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Суп или рагу, хлеб и сыр</div>
-                </div>
+                <div class="timeline-item"><div class="time">07:00–08:15</div><div class="dot pulse" style="color: var(--danger); background: var(--danger);"></div><div class="content"><strong>Подъём, завтрак, выезд</strong></div></div>
+                <div class="timeline-item"><div class="time">09:30–11:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Cruz del Carmen</strong><div class="note">Визит-центр, начало треккинга</div></div></div>
+                <div class="timeline-item"><div class="time">11:00–12:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Pico del Inglés</strong></div></div>
+                <div class="timeline-item"><div class="time">13:00–14:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Таганана и пикник</strong></div></div>
+                <div class="timeline-item"><div class="time">14:00–15:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Playa de Benijo</strong><div class="note">Дикий пляж с чёрным песком</div></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Суп или рагу, хлеб и сыр</div></div>
             </div>
 
             <div class="cost-box">
@@ -1432,9 +1793,9 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Rural+de+Anaga" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Парк Анага</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Cruz+del+Carmen+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-info-circle"></i> Cruz del Carmen</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Benijo+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Playa de Benijo</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Rural+de+Anaga" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-map-marker-alt"></i> Парк Анага</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Cruz+del+Carmen+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-info-circle"></i> Cruz del Carmen</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Benijo+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-umbrella-beach"></i> Playa de Benijo</a>
             </div>
 
             <div class="info-box warning" style="margin-top:16px;">
@@ -1444,7 +1805,7 @@
         </div>
     </div>
 
-    <!-- ==================== DAY 10 ==================== -->
+    <!-- DAY 10 -->
     <div class="day-card" id="day-10">
         <div class="day-header">
             <div class="day-num" style="background: var(--north);">28</div>
@@ -1452,41 +1813,17 @@
                 <h2>Ла-Оротава, Икод и Гарачико</h2>
                 <div class="day-date">Среда · 28 октября 2026</div>
             </div>
-            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+            <div class="difficulty medium"><i class="fas fa-bolt" style="font-size:8px;"></i> Средний</div>
         </div>
         <div class="day-body">
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">08:00–09:15</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:30–11:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Ла-Оротава</strong><div class="note">Исторический центр, сады</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">12:15–13:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Икод-де-лос-Винос</strong><div class="note">Драконово дерево, старый город</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00–16:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Гарачико</strong><div class="note">Повторный визит или первый</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">16:30–17:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Лос-Реалехос или смотровая</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Ужин:</strong> Рыба, картофель, mojo, салат и bienmesabe</div>
-                </div>
+                <div class="timeline-item"><div class="time">08:00–09:15</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Подъём, завтрак, выезд</strong></div></div>
+                <div class="timeline-item"><div class="time">09:30–11:30</div><div class="dot pulse" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Ла-Оротава</strong><div class="note">Исторический центр, сады</div></div></div>
+                <div class="timeline-item"><div class="time">12:15–13:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Икод-де-лос-Винос</strong><div class="note">Драконово дерево, старый город</div></div></div>
+                <div class="timeline-item"><div class="time">15:00–16:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Гарачико</strong></div></div>
+                <div class="timeline-item"><div class="time">16:30–17:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Лос-Реалехос или смотровая</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рыба, картофель, mojo, салат и bienmesabe</div></div>
             </div>
 
             <div class="cost-box">
@@ -1498,15 +1835,15 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=La+Orotava+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Ла-Оротава</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Icod+de+los+Vinos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-tree"></i> Икод</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Гарачико</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Orotava+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-city"></i> Ла-Оротава</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Icod+de+los+Vinos" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-tree"></i> Икод</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-city"></i> Гарачико</a>
                 <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€5 / чел (Икод)</span>
             </div>
         </div>
     </div>
 
-    <!-- ==================== DAY 11 ==================== -->
+    <!-- DAY 11 -->
     <div class="day-card" id="day-11">
         <div class="day-header">
             <div class="day-num" style="background: var(--north);">29</div>
@@ -1514,7 +1851,7 @@
                 <h2>Резерв и подготовка к вылету</h2>
                 <div class="day-date">Четверг · 29 октября 2026</div>
             </div>
-            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+            <div class="difficulty easy"><i class="fas fa-bolt" style="font-size:8px;"></i> Лёгкий</div>
         </div>
         <div class="day-body">
             <div class="info-box purple">
@@ -1524,36 +1861,12 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">09:00–10:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Завтрак</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00–12:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Прогулка по Пуэрто-де-ла-Крус</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">12:00–13:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Небольшая закупка</strong><div class="note">Хлеб, фрукты, вода, еда в дорогу</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:00–16:30</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Резервный блок:</strong> Тейде, Маска, Анага или отдых</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">19:00–20:00</div>
-                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
-                    <div class="content"><strong>Упаковка, проверка документов</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">20:00</div>
-                    <div class="dot" style="color: #888; background: #888;"></div>
-                    <div class="content"><strong>Финальный ужин:</strong> Papas arrugadas, два mojo, рыба, козий сыр, оливки, салат и десерт</div>
-                </div>
+                <div class="timeline-item"><div class="time">09:00–10:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Завтрак</strong></div></div>
+                <div class="timeline-item"><div class="time">10:00–12:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Прогулка по Пуэрто-де-ла-Крус</strong></div></div>
+                <div class="timeline-item"><div class="time">12:00–13:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Небольшая закупка</strong><div class="note">Хлеб, фрукты, вода, еда в дорогу</div></div></div>
+                <div class="timeline-item"><div class="time">14:00–16:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Резервный блок:</strong> Тейде, Маска, Анага или отдых</div></div>
+                <div class="timeline-item"><div class="time">19:00–20:00</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Упаковка, проверка документов</strong></div></div>
+                <div class="timeline-item"><div class="time">20:00</div><div class="dot pulse" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Финальный ужин:</strong> Papas arrugadas, два mojo, рыба, козий сыр, оливки, салат и десерт</div></div>
             </div>
 
             <div class="cost-box">
@@ -1566,7 +1879,7 @@
         </div>
     </div>
 
-    <!-- ==================== DAY 12 ==================== -->
+    <!-- DAY 12 -->
     <div class="day-card" id="day-12">
         <div class="day-header">
             <div class="day-num" style="background: var(--flight);">30</div>
@@ -1574,7 +1887,7 @@
                 <h2>Возврат авто и вылет</h2>
                 <div class="day-date">Пятница · 30 октября 2026</div>
             </div>
-            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+            <div class="difficulty hard"><i class="fas fa-bolt" style="font-size:8px;"></i> Сложный</div>
         </div>
         <div class="day-body">
             <div class="info-box danger">
@@ -1584,56 +1897,16 @@
 
             <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">07:30–08:30</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Подъём, завтрак, сборы, уборка</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:30</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Выезд из Пуэрто-де-ла-Крус</strong><div class="note">~90–95 км до TFS</div></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:45–11:15</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Заправка и короткая остановка</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">11:30–12:00</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Прибытие в район TFS</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">12:00–13:30</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Запас на навигацию и очереди</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">13:30–14:30</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Финальная подготовка авто и багажа</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Сдача автомобиля PlusCar</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">15:00–16:00</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Переход в терминал и регистрация</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">16:00–17:15</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Контроль безопасности и ожидание</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">18:00</div>
-                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
-                    <div class="content"><strong>Вылет ✈️</strong></div>
-                </div>
+                <div class="timeline-item"><div class="time">07:30–08:30</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Подъём, завтрак, сборы, уборка</strong></div></div>
+                <div class="timeline-item"><div class="time">09:30</div><div class="dot pulse" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Выезд из Пуэрто-де-ла-Крус</strong><div class="note">~90–95 км до TFS</div></div></div>
+                <div class="timeline-item"><div class="time">10:45–11:15</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Заправка и короткая остановка</strong></div></div>
+                <div class="timeline-item"><div class="time">11:30–12:00</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Прибытие в район TFS</strong></div></div>
+                <div class="timeline-item"><div class="time">12:00–13:30</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Запас на навигацию и очереди</strong></div></div>
+                <div class="timeline-item"><div class="time">13:30–14:30</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Финальная подготовка авто и багажа</strong></div></div>
+                <div class="timeline-item"><div class="time">15:00</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Сдача автомобиля PlusCar</strong></div></div>
+                <div class="timeline-item"><div class="time">15:00–16:00</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Переход в терминал и регистрация</strong></div></div>
+                <div class="timeline-item"><div class="time">16:00–17:15</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Контроль безопасности и ожидание</strong></div></div>
+                <div class="timeline-item"><div class="time">18:00</div><div class="dot" style="color: var(--flight); background: var(--flight);"></div><div class="content"><strong>Вылет ✈️</strong></div></div>
             </div>
 
             <div class="cost-box">
@@ -1645,87 +1918,272 @@
             </div>
 
             <div class="tags" style="margin-top:16px;">
-                <a href="https://www.google.com/maps/dir/?api=1&origin=C.+Aceviño+6+Puerto+de+la+Cruz&destination=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> Puerto de la Cruz → TFS</a>
+                <a href="https://www.google.com/maps/dir/?api=1&origin=C.+Aceviño+6+Puerto+de+la+Cruz&destination=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps ripple-host"><i class="fas fa-route"></i> Puerto de la Cruz → TFS</a>
             </div>
         </div>
     </div>
+
     </div><!-- /#days-wrapper -->
 
-    <div class="footer">
+    <footer class="footer">
         <p>🌴 Тенерифе · 18–30 октября 2026 · Интерактивный план</p>
-        <p style="margin-top:6px; font-size:0.8rem;">Свайп влево/вправо или вкладки сверху. Стрелки ← → на клавиатуре. Тема — системная по умолчанию.</p>
-    </div>
+        <p style="margin-top:6px; font-size:0.78rem;">Свайп ↔ или вкладки · Стрелки ← → на клавиатуре · Тема системная</p>
+    </footer>
 
 </div>
+
+<!-- ============ FAB GROUP ============ -->
+<div class="fab-container" aria-label="Быстрые действия">
+    <button class="fab primary ripple-host" id="fabNext" aria-label="Следующий день" title="Следующий день">
+        <i class="fas fa-arrow-right" id="fabNextIcon"></i>
+        <span class="fab-badge" id="fabBadge">1</span>
+    </button>
+    <button class="fab ripple-host" id="fabTop" aria-label="Наверх" title="Наверх" style="display:none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</div>
+
+<!-- ============ TIPS DIALOG ============ -->
+<dialog class="tips-dialog" id="tipsDialog">
+    <div class="tips-panel">
+        <div class="tips-header">
+            <h2><i class="fas fa-lightbulb" style="color: var(--south);"></i> Советы путешественнику</h2>
+            <button class="tips-close ripple-host" id="tipsClose" aria-label="Закрыть">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="tips-body">
+
+            <div class="tip-group">
+                <h3><i class="fas fa-cloud-sun"></i> Погода и одежда</h3>
+                <div class="tip-item">
+                    <i class="fas fa-thermometer-half tip-icon"></i>
+                    <div>На юге +24–27 °C круглый год, на севере на 2–3 °C прохладнее. На Тейде может быть <strong>0–10 °C</strong> — берите куртки и кроссовки.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-sun tip-icon"></i>
+                    <div>SPF 50 обязателен даже зимой — солнце на Канарах очень активное. Возьмите очки и кепку.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-wind tip-icon"></i>
+                    <div>На Эль-Медано и в Анаге часто ветрено. Ветровка пригодится и летом.</div>
+                </div>
+            </div>
+
+            <div class="tip-group">
+                <h3><i class="fas fa-car"></i> Аренда авто</h3>
+                <div class="tip-item">
+                    <i class="fas fa-camera tip-icon"></i>
+                    <div><strong>Сфотографируйте машину со всех сторон</strong> до выезда — включая крышу, диски и салон. Это спасёт от спорных царапин.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-gas-pump tip-icon"></i>
+                    <div>Заправляйтесь на <strong>Cepsa или Repsol</strong> — на трассе TFS–Los Cristianos есть несколько. Перед сдачей обязателен полный бак.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-parking tip-icon"></i>
+                    <div>В Пуэрто-де-ла-Крус парковка бесплатная у <strong>Plaza del Charco</strong> вечером. В Лос-Кристианосе — у торговых центров.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-mountain tip-icon"></i>
+                    <div>Дороги в Анаге и Маске <strong>очень извилистые</strong>. Если укачивает — берите таблетки.</div>
+                </div>
+            </div>
+
+            <div class="tip-group">
+                <h3><i class="fas fa-utensils"></i> Еда и магазины</h3>
+                <div class="tip-item">
+                    <i class="fas fa-store tip-icon"></i>
+                    <div><strong>Mercadona закрыта по воскресеньям.</strong> В субботу вечером берите продукты на 2 дня вперёд. Открыта: пн–сб 9:00–21:30.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-wine-glass tip-icon"></i>
+                    <div>Местное вино <strong>Tacoronte-Acentejo</strong> — от €4–6 за бутылку в Mercadona. Отличное соотношение цена/качество.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-cheese tip-icon"></i>
+                    <div>Обязательно попробуйте <strong>queso de cabra</strong> (козий сыр), <strong>mojo rojo/verde</strong>, <strong>almogrote</strong> и <strong>bienmesabe</strong> на десерт.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-utensils tip-icon"></i>
+                    <div>В меню дня (<em>menú del día</em>) в тавернах — <strong>€10–14</strong> за 2 блюда + напиток + десерт. Это лучший способ поесть недорого.</div>
+                </div>
+            </div>
+
+            <div class="tip-group">
+                <h3><i class="fas fa-euro-sign"></i> Деньги и связь</h3>
+                <div class="tip-item">
+                    <i class="fas fa-credit-card tip-icon"></i>
+                    <div>Везде принимают карты, но <strong>€50–80 наличными</strong> на мелкие расходы и парковки пригодятся.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-sim-card tip-icon"></i>
+                    <div>Для интернета — <strong>eSIM от Airalo</strong> (Европа ~€8 за 5 ГБ) или местная SIM в аэропорту. Роуминг российских операторов дорогой.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-phone tip-icon"></i>
+                    <div>Экстренные номера Испании: <strong>112</strong> (единый), 091 (полиция), 061 (скорая). Работают без SIM.</div>
+                </div>
+            </div>
+
+            <div class="tip-group">
+                <h3><i class="fas fa-ticket-alt"></i> Билеты и брони</h3>
+                <div class="tip-item">
+                    <i class="fas fa-cable-car tip-icon"></i>
+                    <div><strong>Канатная дорога Тейде</strong> — бронируйте онлайн за 3–5 дней. Утром до 10:00 меньше очередей и яснее небо.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-parrot tip-icon"></i>
+                    <div><strong>Лоро-парк</strong> — онлайн-билеты дешевле на €3–5 и без очереди. Приходите к открытию (09:30).</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-ship tip-icon"></i>
+                    <div>Морские экскурсии к китам — берите <strong>утренний слот (10:00)</strong>. Море спокойнее, животных больше.</div>
+                </div>
+            </div>
+
+            <div class="tip-group">
+                <h3><i class="fas fa-heart"></i> Для пары</h3>
+                <div class="tip-item">
+                    <i class="fas fa-camera-retro tip-icon"></i>
+                    <div>Лучшие точки для фото: <strong>Лос-Гигантес</strong> (утёсы), <strong>Playa de Benijo</strong> (закат), <strong>Ла-Оротава</strong> (сады), <strong>смотровая Тейде</strong> (рассвет).</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-glass-cheers tip-icon"></i>
+                    <div>Закат на <strong>Playa Jardín</strong> в Пуэрто-де-ла-Крус — романтично и безлюдно. Возьмите вино и плед.</div>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-spa tip-icon"></i>
+                    <div>Для расслабления — <strong>Lago Martiánez</strong> (бассейны с морской водой, €5,5/чел) или <strong>тайские массажи</strong> в Лос-Кристианосе (€25–40/час).</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</dialog>
 
 <script>
 (function() {
     'use strict';
 
-    /* ============ THEME ============ */
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    /* ================================================================
+       RIPPLE EFFECT (Material Design)
+       ================================================================ */
+    function attachRipple(el) {
+        el.addEventListener('pointerdown', function(e) {
+            if (e.button !== undefined && e.button !== 0) return;
+            var rect = el.getBoundingClientRect();
+            var size = Math.max(rect.width, rect.height);
+            var x = e.clientX - rect.left - size / 2;
+            var y = e.clientY - rect.top - size / 2;
+            var ink = document.createElement('span');
+            ink.className = 'ripple-ink';
+            ink.style.width = ink.style.height = size + 'px';
+            ink.style.left = x + 'px';
+            ink.style.top = y + 'px';
+            el.appendChild(ink);
+            setTimeout(function() {
+                if (ink.parentNode) ink.parentNode.removeChild(ink);
+            }, 700);
+        });
+    }
+    document.querySelectorAll('.ripple-host').forEach(attachRipple);
+
+    /* ================================================================
+       THEME
+       ================================================================ */
+    var themeToggle = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    var themeColorMeta = document.querySelector('meta[name="theme-color"]:not([media])');
 
     function getEffectiveTheme() {
-        const attr = root.getAttribute('data-theme');
+        var attr = root.getAttribute('data-theme');
         if (attr === 'dark' || attr === 'light') return attr;
         return prefersDark.matches ? 'dark' : 'light';
     }
 
-    function updateIcon() {
-        const isDark = getEffectiveTheme() === 'dark';
-        themeToggle.innerHTML = isDark
-            ? '<i class="fas fa-sun"></i>'
-            : '<i class="fas fa-moon"></i>';
+    function updateIcon(animate) {
+        var isDark = getEffectiveTheme() === 'dark';
+        var icon = themeToggle.querySelector('i');
+        if (animate) {
+            themeToggle.classList.add('spinning');
+            setTimeout(function() { themeToggle.classList.remove('spinning'); }, 550);
+        }
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         themeToggle.setAttribute('aria-label', isDark ? 'Включить светлую тему' : 'Включить тёмную тему');
+
+        // Update theme-color meta tags
+        document.querySelectorAll('meta[name="theme-color"]').forEach(function(m) {
+            if (m.media) return;
+            m.setAttribute('content', isDark ? '#1C1B1F' : '#FFFBFE');
+        });
     }
 
-    // Init
-    let saved = null;
+    var saved = null;
     try { saved = localStorage.getItem('tenerife-theme'); } catch(e) {}
-    if (saved === 'dark' || saved === 'light') {
-        root.setAttribute('data-theme', saved);
-    }
-    updateIcon();
+    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+    updateIcon(false);
 
     themeToggle.addEventListener('click', function() {
-        const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
+        var next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
         try { localStorage.setItem('tenerife-theme', next); } catch(e) {}
-        updateIcon();
+        updateIcon(true);
     });
 
-    // React to system change if no manual override
-    const systemListener = function() {
-        if (!root.hasAttribute('data-theme')) updateIcon();
-    };
+    function onSystemThemeChange() {
+        if (!root.hasAttribute('data-theme')) updateIcon(true);
+    }
     if (prefersDark.addEventListener) {
-        prefersDark.addEventListener('change', systemListener);
+        prefersDark.addEventListener('change', onSystemThemeChange);
     } else if (prefersDark.addListener) {
-        prefersDark.addListener(systemListener);
+        prefersDark.addListener(onSystemThemeChange);
     }
 
-    /* ============ TABS ============ */
-    const tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
-    const dayCards = Array.prototype.slice.call(document.querySelectorAll('.day-card'));
+    /* ================================================================
+       TABS + DAY NAVIGATION
+       ================================================================ */
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var dayCards = Array.prototype.slice.call(document.querySelectorAll('.day-card'));
+    var fabNext = document.getElementById('fabNext');
+    var fabNextIcon = document.getElementById('fabNextIcon');
+    var fabBadge = document.getElementById('fabBadge');
+    var currentDay = 0;
+
+    function updateFab() {
+        if (currentDay >= tabs.length - 1) {
+            // Last day — show "to first"
+            fabNextIcon.className = 'fas fa-rotate-left';
+            fabNext.setAttribute('aria-label', 'В начало');
+            fabBadge.textContent = '1';
+            fabNext.style.background = 'var(--north)';
+        } else {
+            fabNextIcon.className = 'fas fa-arrow-right';
+            fabNext.setAttribute('aria-label', 'Следующий день');
+            fabBadge.textContent = (currentDay + 2);
+            fabNext.style.background = 'var(--south)';
+        }
+    }
 
     function activateDay(index, scroll) {
         if (index < 0 || index >= tabs.length) return;
+        currentDay = index;
+
         tabs.forEach(function(t) { t.classList.remove('active'); });
         tabs[index].classList.add('active');
+
         dayCards.forEach(function(c) { c.classList.remove('active'); });
         var card = document.getElementById('day-' + index);
-        if (card) {
-            card.classList.add('active');
-            if (scroll) {
-                // Scroll the tabs strip to make active tab visible
-                tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                // Scroll the page to the tabs / day card area
-                var tabsEl = document.getElementById('tabs');
-                var y = tabsEl.getBoundingClientRect().top + window.pageYOffset - 12;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
+        if (card) card.classList.add('active');
+
+        updateFab();
+
+        if (scroll) {
+            tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            var tabsEl = document.getElementById('tabs');
+            var y = tabsEl.getBoundingClientRect().top + window.pageYOffset - 12;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
     }
 
@@ -1734,14 +2192,18 @@
             e.preventDefault();
             activateDay(i, true);
         });
-        // iOS-friendly: also react to touchend if click is unreliable
-        tab.addEventListener('touchend', function(e) {
-            // Let the click event fire; do nothing special here.
-            // But if for some reason click doesn't fire, we handle it:
-        }, { passive: true });
     });
 
-    /* ============ SWIPE (only on day cards area) ============ */
+    // FAB next / cycle
+    fabNext.addEventListener('click', function() {
+        var next = currentDay + 1;
+        if (next >= tabs.length) next = 0;
+        activateDay(next, true);
+    });
+
+    /* ================================================================
+       SWIPE (only on #days-wrapper)
+       ================================================================ */
     var wrapper = document.getElementById('days-wrapper');
     var startX = 0, startY = 0, startTime = 0, tracking = false;
 
@@ -1761,34 +2223,96 @@
         var dy = touch.clientY - startY;
         var dt = Date.now() - startTime;
 
-        // Must be quick and primarily horizontal
-        if (dt > 600) return;
+        if (dt > 700) return;
         if (Math.abs(dx) < 60) return;
         if (Math.abs(dx) < Math.abs(dy) * 1.5) return;
 
-        // Ignore if started on interactive element (links)
+        // ignore when started on link/button
         var target = e.target;
         while (target && target !== wrapper) {
             if (target.tagName === 'A' || target.tagName === 'BUTTON') return;
             target = target.parentNode;
         }
 
-        var active = document.querySelector('.tab.active');
-        if (!active) return;
-        var current = parseInt(active.dataset.day, 10);
-        var next = dx < 0 ? current + 1 : current - 1;
+        var next = dx < 0 ? currentDay + 1 : currentDay - 1;
+        if (next < 0) next = tabs.length - 1;
+        if (next >= tabs.length) next = 0;
         activateDay(next, true);
     }, { passive: true });
 
-    /* ============ KEYBOARD ============ */
+    /* ================================================================
+       KEYBOARD
+       ================================================================ */
     document.addEventListener('keydown', function(e) {
         if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
-        var active = document.querySelector('.tab.active');
-        if (!active) return;
-        var current = parseInt(active.dataset.day, 10);
-        if (e.key === 'ArrowRight') { activateDay(current + 1, true); e.preventDefault(); }
-        if (e.key === 'ArrowLeft')  { activateDay(current - 1, true); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { activateDay(Math.min(currentDay + 1, tabs.length - 1), true); e.preventDefault(); }
+        if (e.key === 'ArrowLeft')  { activateDay(Math.max(currentDay - 1, 0), true); e.preventDefault(); }
     });
+
+    /* ================================================================
+       SCROLL PROGRESS + BACK-TO-TOP FAB
+       ================================================================ */
+    var progress = document.getElementById('scrollProgress');
+    var fabTop = document.getElementById('fabTop');
+    var ticking = false;
+
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            var y = window.pageYOffset;
+            var pct = h > 0 ? (y / h) * 100 : 0;
+            progress.style.width = pct + '%';
+
+            if (y > 500) {
+                fabTop.style.display = 'flex';
+            } else {
+                fabTop.style.display = 'none';
+            }
+            ticking = false;
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    fabTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ================================================================
+       TIPS DIALOG
+       ================================================================ */
+    var tipsDialog = document.getElementById('tipsDialog');
+    var tipsBtn = document.getElementById('tipsBtn');
+    var tipsClose = document.getElementById('tipsClose');
+
+    if (tipsDialog && typeof tipsDialog.showModal === 'function') {
+        tipsBtn.addEventListener('click', function() {
+            try { tipsDialog.showModal(); } catch(e) {}
+        });
+        tipsClose.addEventListener('click', function() {
+            tipsDialog.close();
+        });
+        // close on backdrop click
+        tipsDialog.addEventListener('click', function(e) {
+            var rect = tipsDialog.getBoundingClientRect();
+            var inside = (
+                e.clientX >= rect.left && e.clientX <= rect.right &&
+                e.clientY >= rect.top && e.clientY <= rect.bottom
+            );
+            if (!inside) tipsDialog.close();
+        });
+        // close on Escape (native)
+    } else {
+        // fallback: hide button if dialog not supported
+        tipsBtn.style.display = 'none';
+    }
+
+    /* ================================================================
+       INIT
+       ================================================================ */
+    updateFab();
 
 })();
 </script>
