@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+    <title>🌴 Тенерифе 12 дней · Интерактивный план</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============ LIGHT THEME (default) ============ */
+        html {
+            --south: #e67e22;
+            --north: #2980b9;
+            --transition: #8e44ad;
+            --flight: #c0392b;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #ececec;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 28px rgba(0,0,0,0.12);
+            --header-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --header-text: #ffffff;
+            --header-badge-bg: rgba(255,255,255,0.15);
+            --timeline-line: #e0e0e0;
+            --tab-bg: #ffffff;
+            --tab-text: #7f8c8d;
+            --tab-active-bg: #1a1a2e;
+            --tab-active-text: #ffffff;
+            --shopping-bg: #f8f9fa;
+            --cost-bg: linear-gradient(135deg, #fff9e6, #fff3cc);
+            --cost-border: #f39c12;
+            --cost-text: #7d6608;
+            --info-bg: #e8f4fd;
+            --info-border: #2980b9;
+            --info-text: #1a5276;
+            --warning-bg: #fef5e7;
+            --warning-border: #f39c12;
+            --warning-text: #7d6608;
+            --success-bg: #e8f8f0;
+            --success-border: #27ae60;
+            --success-text: #1e8449;
+            --danger-bg: #fde8e8;
+            --danger-border: #e74c3c;
+            --danger-text: #922b21;
+            --purple-bg: #f4ecf7;
+            --purple-border: #8e44ad;
+            --purple-text: #6c3483;
+            --tag-maps-bg: #e8f4fd;
+            --tag-maps-text: #2980b9;
+            --tag-hours-bg: #f0e6ff;
+            --tag-hours-text: #8e44ad;
+            --tag-cost-bg: #fff3e0;
+            --tag-cost-text: #e67e22;
+            --tag-tip-bg: #e8f8f0;
+            --tag-tip-text: #27ae60;
+            --easy-bg: #e8f8f0;
+            --medium-bg: #fef5e7;
+            --hard-bg: #fde8e8;
+            --overlay-glow: rgba(255,255,255,0.05);
+        }
+
+        /* ============ SYSTEM DARK (when no override) ============ */
+        @media (prefers-color-scheme: dark) {
+            html:not([data-theme="light"]) {
+                --bg: #0d1117;
+                --card: #161b22;
+                --text: #e6edf3;
+                --text-light: #8b949e;
+                --border: #30363d;
+                --shadow: 0 4px 20px rgba(0,0,0,0.5);
+                --shadow-hover: 0 8px 28px rgba(0,0,0,0.6);
+                --header-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2f4a 100%);
+                --header-text: #ffffff;
+                --header-badge-bg: rgba(255,255,255,0.1);
+                --timeline-line: #30363d;
+                --tab-bg: #161b22;
+                --tab-text: #8b949e;
+                --tab-active-bg: #e6edf3;
+                --tab-active-text: #0d1117;
+                --shopping-bg: #1a2028;
+                --cost-bg: linear-gradient(135deg, #2a2410, #3d3415);
+                --cost-border: #d4a017;
+                --cost-text: #e8c547;
+                --info-bg: #0f2233;
+                --info-border: #4a9eda;
+                --info-text: #a4cff0;
+                --warning-bg: #2e2410;
+                --warning-border: #d4a017;
+                --warning-text: #e8c547;
+                --success-bg: #0f2e1f;
+                --success-border: #3fb96f;
+                --success-text: #86e0a8;
+                --danger-bg: #2e1414;
+                --danger-border: #e74c3c;
+                --danger-text: #f5a3a3;
+                --purple-bg: #221633;
+                --purple-border: #a569bd;
+                --purple-text: #d2b4de;
+                --tag-maps-bg: #0f2233;
+                --tag-maps-text: #6db6e8;
+                --tag-hours-bg: #221633;
+                --tag-hours-text: #c39bd3;
+                --tag-cost-bg: #2e2410;
+                --tag-cost-text: #f0b95c;
+                --tag-tip-bg: #0f2e1f;
+                --tag-tip-text: #6ddba0;
+                --easy-bg: #0f2e1f;
+                --medium-bg: #2e2410;
+                --hard-bg: #2e1414;
+                --overlay-glow: rgba(255,255,255,0.02);
+            }
+        }
+
+        /* ============ MANUAL DARK ============ */
+        html[data-theme="dark"] {
+            --bg: #0d1117;
+            --card: #161b22;
+            --text: #e6edf3;
+            --text-light: #8b949e;
+            --border: #30363d;
+            --shadow: 0 4px 20px rgba(0,0,0,0.5);
+            --shadow-hover: 0 8px 28px rgba(0,0,0,0.6);
+            --header-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2f4a 100%);
+            --header-text: #ffffff;
+            --header-badge-bg: rgba(255,255,255,0.1);
+            --timeline-line: #30363d;
+            --tab-bg: #161b22;
+            --tab-text: #8b949e;
+            --tab-active-bg: #e6edf3;
+            --tab-active-text: #0d1117;
+            --shopping-bg: #1a2028;
+            --cost-bg: linear-gradient(135deg, #2a2410, #3d3415);
+            --cost-border: #d4a017;
+            --cost-text: #e8c547;
+            --info-bg: #0f2233;
+            --info-border: #4a9eda;
+            --info-text: #a4cff0;
+            --warning-bg: #2e2410;
+            --warning-border: #d4a017;
+            --warning-text: #e8c547;
+            --success-bg: #0f2e1f;
+            --success-border: #3fb96f;
+            --success-text: #86e0a8;
+            --danger-bg: #2e1414;
+            --danger-border: #e74c3c;
+            --danger-text: #f5a3a3;
+            --purple-bg: #221633;
+            --purple-border: #a569bd;
+            --purple-text: #d2b4de;
+            --tag-maps-bg: #0f2233;
+            --tag-maps-text: #6db6e8;
+            --tag-hours-bg: #221633;
+            --tag-hours-text: #c39bd3;
+            --tag-cost-bg: #2e2410;
+            --tag-cost-text: #f0b95c;
+            --tag-tip-bg: #0f2e1f;
+            --tag-tip-text: #6ddba0;
+            --easy-bg: #0f2e1f;
+            --medium-bg: #2e2410;
+            --hard-bg: #2e1414;
+            --overlay-glow: rgba(255,255,255,0.02);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--header-bg);
+            border-radius: 16px;
+            color: var(--header-text);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .header::before {
+            content: '🏝️';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            right: -40px;
+            top: -60px;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .header .dates {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            background: var(--header-badge-bg);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .header .dates i { opacity: 0.7; }
+
+        /* Theme toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+            touch-action: manipulation;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:active {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
+        /* ============ STATS ============ */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .stat-card .value { font-size: 1.5rem; font-weight: 800; }
+        .stat-card .label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* ============ TABS ============ */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding: 4px 2px 10px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+        }
+
+        .tabs::-webkit-scrollbar { height: 4px; }
+        .tabs::-webkit-scrollbar-thumb {
+            background: var(--text-light);
+            opacity: 0.3;
+            border-radius: 4px;
+        }
+
+        .tab {
+            padding: 11px 20px;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            background: var(--tab-bg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+            color: var(--tab-text);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            flex-shrink: 0;
+            font-family: inherit;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+            user-select: none;
+            -webkit-user-select: none;
+            scroll-snap-align: start;
+        }
+
+        .tab:hover { border-color: var(--border); color: var(--text); }
+
+        .tab.active {
+            background: var(--tab-active-bg);
+            color: var(--tab-active-text);
+            border-color: var(--tab-active-bg);
+            box-shadow: 0 4px 12px rgba(26,26,46,0.3);
+        }
+
+        .tab .tab-icon { margin-right: 4px; }
+
+        /* ============ DAY CARDS ============ */
+        #days-wrapper {
+            touch-action: pan-y;
+        }
+
+        .day-card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            transition: background 0.3s;
+        }
+
+        .day-card.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .day-header .day-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .day-header .day-info { flex: 1; min-width: 150px; }
+        .day-header .day-info h2 { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+        .day-header .day-info .day-date { font-size: 0.85rem; color: var(--text-light); }
+
+        .difficulty {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .difficulty.easy { background: var(--easy-bg); color: var(--easy); }
+        .difficulty.medium { background: var(--medium-bg); color: var(--medium); }
+        .difficulty.hard { background: var(--hard-bg); color: var(--hard); }
+
+        .day-body { padding: 20px 24px; }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding-left: 24px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--timeline-line);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 18px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-item .time {
+            flex-shrink: 0;
+            width: 70px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: right;
+            padding-top: 2px;
+        }
+
+        .timeline-item .dot {
+            position: absolute;
+            left: -21px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--card);
+            box-shadow: 0 0 0 2px currentColor;
+            transition: border-color 0.3s;
+        }
+
+        .timeline-item .content { flex: 1; min-width: 0; }
+        .timeline-item .content strong { font-weight: 600; }
+        .timeline-item .content .note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* ============ TAGS ============ */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+
+        .tag.maps { background: var(--tag-maps-bg); color: var(--tag-maps-text); }
+        .tag.maps:hover, .tag.maps:active { background: var(--tag-maps-text); color: white; }
+
+        .tag.hours { background: var(--tag-hours-bg); color: var(--tag-hours-text); }
+        .tag.cost { background: var(--tag-cost-bg); color: var(--tag-cost-text); }
+        .tag.tip { background: var(--tag-tip-bg); color: var(--tag-tip-text); }
+
+        /* ============ COST BOX ============ */
+        .cost-box {
+            display: flex;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--cost-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--cost-border);
+            margin-top: 18px;
+            font-size: 0.92rem;
+            color: var(--cost-text);
+            align-items: flex-start;
+            transition: background 0.3s;
+        }
+
+        .cost-box > i {
+            font-size: 1.3rem;
+            color: var(--cost-border);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .cost-box .cost-main {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .cost-box .cost-details {
+            font-size: 0.82rem;
+            opacity: 0.85;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* ============ INFO BOXES ============ */
+        .info-box {
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            transition: background 0.3s;
+        }
+
+        .info-box > i {
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .info-box.warning { background: var(--warning-bg); border-left: 4px solid var(--warning-border); color: var(--warning-text); }
+        .info-box.danger { background: var(--danger-bg); border-left: 4px solid var(--danger-border); color: var(--danger-text); }
+        .info-box.success { background: var(--success-bg); border-left: 4px solid var(--success-border); color: var(--success-text); }
+        .info-box.info { background: var(--info-bg); border-left: 4px solid var(--info-border); color: var(--info-text); }
+        .info-box.purple { background: var(--purple-bg); border-left: 4px solid var(--purple-border); color: var(--purple-text); }
+
+        .info-box a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 700;
+            margin: 22px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ============ SHOPPING ============ */
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--shopping-bg);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .shopping-item i { color: var(--text-light); font-size: 0.8rem; }
+
+        /* ============ ROUTE LINK ============ */
+        .route-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--tab-active-bg);
+            color: var(--tab-active-text);
+            padding: 9px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+
+        .route-link:hover, .route-link:active {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ============ SUMMARY ============ */
+        .summary-section {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 28px;
+            margin-bottom: 30px;
+            transition: background 0.3s;
+        }
+
+        .summary-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-card {
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .summary-card.south {
+            background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(230,126,34,0.05));
+            border-left: 4px solid var(--south);
+        }
+        .summary-card.north {
+            background: linear-gradient(135deg, rgba(41,128,185,0.12), rgba(41,128,185,0.05));
+            border-left: 4px solid var(--north);
+        }
+        .summary-card.transition-card {
+            background: linear-gradient(135deg, rgba(142,68,173,0.12), rgba(142,68,173,0.05));
+            border-left: 4px solid var(--transition);
+        }
+
+        .summary-card h4 { font-weight: 700; margin-bottom: 6px; }
+        .summary-card p { font-size: 0.85rem; color: var(--text-light); }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .header { padding: 28px 16px; }
+            .header h1 { font-size: 1.6rem; }
+            .header .subtitle { font-size: 0.95rem; }
+            .day-header { padding: 16px; gap: 12px; }
+            .day-body { padding: 16px; }
+            .timeline { padding-left: 20px; }
+            .timeline-item .time { width: 55px; font-size: 0.72rem; }
+            .timeline-item .dot { left: -17px; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .summary-section { padding: 20px 16px; }
+            .theme-toggle { width: 40px; height: 40px; font-size: 0.9rem; }
+        }
+
+        @media print {
+            .tabs, .route-link, .tag.maps, .theme-toggle { display: none; }
+            .day-card { display: block !important; break-inside: avoid; }
+            .header { background: white; color: black; }
+            .header::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
+            <i class="fas fa-moon"></i>
+        </button>
+        <h1>🌴 Тенерифе · 12 ночей</h1>
+        <div class="subtitle">Интерактивный план · Пара · Юг → Север → Вылет</div>
+        <div class="dates">
+            <i class="fas fa-plane-departure"></i>
+            <span>18 — 30 октября 2026</span>
+            <i class="fas fa-plane-arrival"></i>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="icon">🌞</div>
+            <div class="value">6</div>
+            <div class="label">Ночей на юге</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon">🌿</div>
+            <div class="value">6</div>
+            <div class="label">Ночей на севере</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon">🚗</div>
+            <div class="value">12</div>
+            <div class="label">Дней с авто</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon">💰</div>
+            <div class="value">~€700</div>
+            <div class="label">Активности / 2 чел</div>
+        </div>
+    </div>
+
+    <!-- HOTELS -->
+    <div class="summary-section">
+        <h3><i class="fas fa-hotel" style="color: var(--south);"></i> Ваши базы проживания</h3>
+        <div class="summary-grid">
+            <div class="summary-card south">
+                <h4>🌞 Юг · 18–24 октября</h4>
+                <p><strong>Castle Harbour</strong><br>Av. San Francisco, 12, 38650 Los Cristianos</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Av.+San+Francisco+12+Los+Cristianos+Tenerife" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+            </div>
+            <div class="summary-card north">
+                <h4>🌿 Север · 24–30 октября</h4>
+                <p><strong>Coral Teide Mar</strong><br>C. Aceviño, 6, 38400 Puerto de la Cruz</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=C.+Aceviño+6+Puerto+de+la+Cruz+Tenerife" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+            </div>
+            <div class="summary-card transition-card">
+                <h4>🚗 Аренда авто · PlusCar</h4>
+                <p>Tenerife South Airport (TFS)<br>Получение: 18.10 в 11:00<br>Сдача: 30.10 в 15:00</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps" style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> TFS</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs" id="tabs" role="tablist">
+        <button type="button" class="tab active" data-day="0"><span class="tab-icon">🛬</span> 18 окт</button>
+        <button type="button" class="tab" data-day="1"><span class="tab-icon">🛒</span> 19 окт</button>
+        <button type="button" class="tab" data-day="2"><span class="tab-icon">🌋</span> 20 окт</button>
+        <button type="button" class="tab" data-day="3"><span class="tab-icon">🐋</span> 21 окт</button>
+        <button type="button" class="tab" data-day="4"><span class="tab-icon">🏔️</span> 22 окт</button>
+        <button type="button" class="tab" data-day="5"><span class="tab-icon">🏘️</span> 23 окт</button>
+        <button type="button" class="tab" data-day="6"><span class="tab-icon">🚙</span> 24 окт</button>
+        <button type="button" class="tab" data-day="7"><span class="tab-icon">🏛️</span> 25 окт</button>
+        <button type="button" class="tab" data-day="8"><span class="tab-icon">🦜</span> 26 окт</button>
+        <button type="button" class="tab" data-day="9"><span class="tab-icon">🌳</span> 27 окт</button>
+        <button type="button" class="tab" data-day="10"><span class="tab-icon">🏡</span> 28 окт</button>
+        <button type="button" class="tab" data-day="11"><span class="tab-icon">📦</span> 29 окт</button>
+        <button type="button" class="tab" data-day="12"><span class="tab-icon">✈️</span> 30 окт</button>
+    </div>
+
+    <!-- ==================== DAY 0 ==================== -->
+    <div id="days-wrapper">
+    <div class="day-card active" id="day-0">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--flight);">18</div>
+            <div class="day-info">
+                <h2>Прилёт, авто и заселение</h2>
+                <div class="day-date">Воскресенье · 18 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div><strong>Mercadona закрыта по воскресеньям!</strong> Купите минимальный набор продуктов в аэропорту или в работающем магазине по дороге. Основная закупка — завтра.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">09:20</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Прилёт в TFS</strong><div class="note">Паспортный контроль, багаж</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:30–11:00</div>
+                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
+                    <div class="content"><strong>Переход к офису PlusCar</strong><div class="note">Парковка аэропорта Tenerife South</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:00–11:45</div>
+                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
+                    <div class="content"><strong>Получение автомобиля</strong><div class="note">Осмотр, фотофиксация, проверка топлива</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:00–13:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Лёгкая закупка + обед</strong><div class="note">Хлеб, сыр, нарезка, вода, вино</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13:30–15:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Прогулка у Лос-Кристианоса</strong><div class="note">Ожидание заселения</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–16:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Заселение в Castle Harbour</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:00–18:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Отдых, Playa de Los Cristianos</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин с вином</strong><div class="note">Домашний: хлеб, сыр, нарезка, салат</div></div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€70 за двоих</div>
+                    <div class="cost-details">Мини-закупка ~€20 · Ужин ~€15 · Топливо/парковка ~€10 · Аренда авто (1 день) ~€25</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Tenerife+South+Airport&destination=Av.+San+Francisco+12+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> TFS → Los Cristianos</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Castle+Harbour+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-hotel"></i> Castle Harbour</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 1 ==================== -->
+    <div class="day-card" id="day-1">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--south);">19</div>
+            <div class="day-info">
+                <h2>Большая закупка и южное побережье</h2>
+                <div class="day-date">Понедельник · 19 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box success">
+                <i class="fas fa-check-circle"></i>
+                <div><strong>Mercadona работает!</strong> Основная закупка на 4–5 дней. Адрес: C.C. Mencey, C. Ramona Martin Artista, 13.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Подъём, завтрак</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09:30–10:45</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Mercadona: большая закупка</strong><div class="note">C.C. Mencey · Открыто 9:00–21:30</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:30–13:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Playa de las Vistas и набережная</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">14:30–16:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Плайя-де-лас-Америкас и Playa del Camisón</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:30–18:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Ла-Калета</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Papas arrugadas, mojo, рыба и салат</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€70 за двоих</div>
+                    <div class="cost-details">Mercadona (4–5 дней) ~€65 · Пляжи бесплатно</div>
+                </div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-shopping-cart"></i> Список закупки (на 4–5 дней)</div>
+            <div class="shopping-grid">
+                <div class="shopping-item"><i class="fas fa-check"></i> Овсянка, яйца, хлеб</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Йогурты, кофе, молоко</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Бананы, яблоки, апельсины</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Паста, рис, томатный соус</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Картофель, курица, тунец</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Рыба на ужин</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Салат, помидоры, огурцы</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Козий сыр, mojo</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Almogrote, оливки, орехи</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> 2–3 бутылки вина</div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+C.C.+Mencey+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Mercadona</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+las+Vistas+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Playa de las Vistas</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 2 ==================== -->
+    <div class="day-card" id="day-2">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--south);">20</div>
+            <div class="day-info">
+                <h2>Тейде · Национальный парк</h2>
+                <div class="day-date">Вторник · 20 октября 2026</div>
+            </div>
+            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box info">
+                <i class="fas fa-info-circle"></i>
+                <div><strong>Канатная дорога:</strong> 09:00–18:40 ежедневно. Билеты заранее: <a href="https://www.volcanoteide.com" target="_blank" rel="noopener">volcanoteide.com</a> · €41/взрослый (туда-обратно)</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">06:45</div>
+                    <div class="dot" style="color: var(--hard); background: var(--hard);"></div>
+                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Вилафлор</strong><div class="note">Живописная деревня по пути</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–13:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Национальный парк Тейде</strong><div class="note">Смотровые, лавовые поля, пикник</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">14:15–15:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Канатная дорога</strong><div class="note">Только при наличии брони</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Омлет с картофелем и салат</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€100 за двоих</div>
+                    <div class="cost-details">Канатная дорога €82 (2×€41) · Топливо ~€15 · Пикник из дома</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Teide+Cable+Car+Base+Station" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Канатная дорога</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Nacional+del+Teide" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-mountain"></i> Нац. парк</a>
+                <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€82 канатка / 2</span>
+                <span class="tag hours"><i class="fas fa-clock"></i> 09:00–18:40</span>
+            </div>
+
+            <div class="info-box warning" style="margin-top:16px;">
+                <i class="fas fa-thermometer-half"></i>
+                <div><strong>Совет:</strong> На высоте 2000+ м холоднее на 10–15 °C. Возьмите куртки, воду и SPF. При сильном ветре канатку закрывают — проверяйте статус утром.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 3 ==================== -->
+    <div class="day-card" id="day-3">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--south);">21</div>
+            <div class="day-info">
+                <h2>Киты и дельфины</h2>
+                <div class="day-date">Среда · 21 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box info">
+                <i class="fas fa-ship"></i>
+                <div>Морские экскурсии из порта Лос-Кристианос или Коста-Адехе. Бронируйте заранее — 2–3 часа, часто с купанием.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08:00–09:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Завтрак, выезд к порту, регистрация</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–13:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Морская экскурсия</strong><div class="note">Киты, дельфины, купание</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–17:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Отдых и пляж</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Рыба, картофель, салат и mojo</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€90 за двоих</div>
+                    <div class="cost-details">Морская экскурсия €80–100 (2 чел) · Парковка ~€3</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Puerto+de+Los+Cristianos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-anchor"></i> Порт Лос-Кристианос</a>
+                <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€80–100 / 2</span>
+                <span class="tag hours"><i class="fas fa-clock"></i> ~3 часа</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 4 ==================== -->
+    <div class="day-card" id="day-4">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--south);">22</div>
+            <div class="day-info">
+                <h2>Лос-Гигантес и Гарачико</h2>
+                <div class="day-date">Четверг · 22 октября 2026</div>
+            </div>
+            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+        </div>
+        <div class="day-body">
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">07:30–08:45</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–11:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Лос-Гигантес</strong><div class="note">Утёсы, смотровые площадки</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:30–13:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Puerto de Santiago и Алькала</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–16:30</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Гарачико</strong><div class="note">Старый город, площадь</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Рис с курицей и овощами</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€30 за двоих</div>
+                    <div class="cost-details">Топливо ~€20 · Парковка ~€5 · Обед-пикник из дома</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Los+Gigantes+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-water"></i> Лос-Гигантес</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Гарачико</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 5 ==================== -->
+    <div class="day-card" id="day-5">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--south);">23</div>
+            <div class="day-info">
+                <h2>Маска или Эль-Медано</h2>
+                <div class="day-date">Пятница · 23 октября 2026</div>
+            </div>
+            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box purple">
+                <i class="fas fa-hiking"></i>
+                <div><strong>Маска:</strong> Деревня открыта всегда. Полный спуск в ущелье требует разрешения и бронирования. Для обзора достаточно деревни и смотровых.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Вариант A: Маска</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">07:30–08:45</div>
+                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
+                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:30–12:30</div>
+                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
+                    <div class="content"><strong>Деревня Маска и смотровые</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13:30–16:00</div>
+                    <div class="dot" style="color: var(--medium); background: var(--medium);"></div>
+                    <div class="content"><strong>Обратная дорога и остановки</strong></div>
+                </div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Вариант B: Эль-Медано</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">10:00–13:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>Эль-Медано</strong><div class="note">Серферский городок, длинный пляж</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">14:00–16:00</div>
+                    <div class="dot" style="color: var(--south); background: var(--south);"></div>
+                    <div class="content"><strong>La Tejita и Montaña Roja</strong></div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€15 за двоих</div>
+                    <div class="cost-details">Топливо ~€10 · Парковка ~€3 · Обед-пикник из дома</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Masca+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Маска</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=El+Medano+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Эль-Медано</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 6 ==================== -->
+    <div class="day-card" id="day-6">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--transition);">24</div>
+            <div class="day-info">
+                <h2>Переезд на север · Ла-Лагуна</h2>
+                <div class="day-date">Суббота · 24 октября 2026</div>
+            </div>
+            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box warning">
+                <i class="fas fa-shopping-cart"></i>
+                <div><strong>Закупка на севере сегодня!</strong> Завтра, 25 октября — воскресенье, Mercadona закрыта. Купите продукты на 5–6 дней после заселения.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">09:30</div>
+                    <div class="dot" style="color: var(--transition); background: var(--transition);"></div>
+                    <div class="content"><strong>Выезд из Лос-Кристианоса</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:45–12:45</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Ла-Лагуна</strong><div class="note">ЮНЕСКО, старый центр</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13:30–15:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Переезд в Пуэрто-де-ла-Крус</strong><div class="note">~40 мин</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–16:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Заселение в Coral Teide Mar</strong><div class="note">C. Aceviño, 6</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:00–17:15</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Mercadona: большая закупка</strong><div class="note">Av. los Cachazos · до 21:30</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">18:30–19:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Plaza del Charco</strong></div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€90 за двоих</div>
+                    <div class="cost-details">Mercadona (5–6 дней) ~€65 · Топливо ~€20 · Парковка ~€5</div>
+                </div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-shopping-cart"></i> Список закупки на севере</div>
+            <div class="shopping-grid">
+                <div class="shopping-item"><i class="fas fa-check"></i> Овсянка, яйца, йогурты</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Хлеб, кофе, молоко, вода</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Фрукты, картофель</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Рис, паста, томатный соус</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Курица и рыба</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Суп или рагу</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Салаты и овощи</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Gofio, mojo, козий сыр</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Almogrote, оливки</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> 3 бутылки вина</div>
+                <div class="shopping-item"><i class="fas fa-check"></i> Bienmesabe (десерт)</div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Los+Cristianos&destination=Puerto+de+la+Cruz&waypoints=La+Laguna" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> Los Cristianos → La Laguna → Puerto Cruz</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Mercadona+Av.+los+Cachazos+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-shopping-cart"></i> Mercadona</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 7 ==================== -->
+    <div class="day-card" id="day-7">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--north);">25</div>
+            <div class="day-info">
+                <h2>Пуэрто-де-ла-Крус пешком</h2>
+                <div class="day-date">Воскресенье · 25 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box success">
+                <i class="fas fa-walking"></i>
+                <div><strong>День без машины и без закупок.</strong> Mercadona закрыта — используем запасы. Прогулка по городу пешком.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">09:00–10:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Завтрак, выход пешком</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–12:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Старый центр и Plaza del Charco</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:00–13:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Набережная</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:00–18:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Lago Martiánez</strong><div class="note">Бассейны с морской водой</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">18:00–19:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Playa Jardín</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Тортилья, салат, козий сыр, хлеб, оливки</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€11 за двоих</div>
+                    <div class="cost-details">Lago Martiánez €11 (2 чел) · Остальное бесплатно</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Plaza+del+Charco+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Plaza del Charco</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lago+Martianez+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-swimming-pool"></i> Lago Martiánez</a>
+                <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€5,5 / чел</span>
+                <span class="tag hours"><i class="fas fa-clock"></i> 10:00–19:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 8 ==================== -->
+    <div class="day-card" id="day-8">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--north);">26</div>
+            <div class="day-info">
+                <h2>Лоро-парк</h2>
+                <div class="day-date">Понедельник · 26 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box info">
+                <i class="fas fa-ticket-alt"></i>
+                <div><strong>Лоро-парк:</strong> 09:30–17:30 ежедневно. Av. Loro Parque, s/n. Онлайн-билеты дешевле и без очереди.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08:00–09:15</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Завтрак, выезд, парковка</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–16:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Лоро-парк</strong><div class="note">Шоу, животные, океанариум</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">18:30–19:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Playa Jardín или Punta Brava</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Паста с тунцом или рис с овощами</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€90 за двоих</div>
+                    <div class="cost-details">Билеты €84 (2 × €42) · Парковка €3 · Еда с собой ~€5</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Loro+Parque+Puerto+de+la+Cruz" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Лоро-парк</a>
+                <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€42 / чел</span>
+                <span class="tag hours"><i class="fas fa-clock"></i> 09:30–17:30</span>
+            </div>
+
+            <div class="info-box success" style="margin-top:16px;">
+                <i class="fas fa-lightbulb"></i>
+                <div><strong>Совет:</strong> Возьмите воду, бутерброды, фрукты и орехи. В парке есть кафе, но очереди длинные.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 9 ==================== -->
+    <div class="day-card" id="day-9">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--north);">27</div>
+            <div class="day-info">
+                <h2>Анага · Древний лес</h2>
+                <div class="day-date">Вторник · 27 октября 2026</div>
+            </div>
+            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box info">
+                <i class="fas fa-tree"></i>
+                <div><strong>Парк Анага</strong> открыт круглосуточно. Визит-центр Cruz del Carmen: 09:30–16:00 (окт–июнь). Вход бесплатный.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">07:00–08:15</div>
+                    <div class="dot" style="color: var(--hard); background: var(--hard);"></div>
+                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09:30–11:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Cruz del Carmen</strong><div class="note">Визит-центр, начало треккинга</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:00–12:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Pico del Inglés</strong><div class="note">Смотровая площадка</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13:00–14:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Таганана и пикник</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">14:00–15:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Playa de Benijo</strong><div class="note">Дикий пляж с чёрным песком</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Суп или рагу, хлеб и сыр</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€20 за двоих</div>
+                    <div class="cost-details">Топливо ~€15 · Парковки бесплатно · Пикник из дома</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Parque+Rural+de+Anaga" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-map-marker-alt"></i> Парк Анага</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Cruz+del+Carmen+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-info-circle"></i> Cruz del Carmen</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Benijo+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-umbrella-beach"></i> Playa de Benijo</a>
+            </div>
+
+            <div class="info-box warning" style="margin-top:16px;">
+                <i class="fas fa-cloud-rain"></i>
+                <div><strong>Погода:</strong> В Анаге влажно и прохладно. Возьмите ветровку и удобную обувь. Дороги извилистые — будьте внимательны.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 10 ==================== -->
+    <div class="day-card" id="day-10">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--north);">28</div>
+            <div class="day-info">
+                <h2>Ла-Оротава, Икод и Гарачико</h2>
+                <div class="day-date">Среда · 28 октября 2026</div>
+            </div>
+            <div class="difficulty medium"><i class="fas fa-circle" style="font-size:6px;"></i> Средний</div>
+        </div>
+        <div class="day-body">
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08:00–09:15</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Подъём, завтрак, выезд</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09:30–11:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Ла-Оротава</strong><div class="note">Исторический центр, сады</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:15–13:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Икод-де-лос-Винос</strong><div class="note">Драконово дерево, старый город</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–16:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Гарачико</strong><div class="note">Повторный визит или первый</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:30–17:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Лос-Реалехос или смотровая</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Ужин:</strong> Рыба, картофель, mojo, салат и bienmesabe</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€30 за двоих</div>
+                    <div class="cost-details">Драконово дерево ~€10 (2 чел) · Парковки ~€5 · Топливо ~€15</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Orotava+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Ла-Оротава</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Icod+de+los+Vinos" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-tree"></i> Икод</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Garachico+Tenerife" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-city"></i> Гарачико</a>
+                <span class="tag cost"><i class="fas fa-euro-sign"></i> ~€5 / чел (Икод)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 11 ==================== -->
+    <div class="day-card" id="day-11">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--north);">29</div>
+            <div class="day-info">
+                <h2>Резерв и подготовка к вылету</h2>
+                <div class="day-date">Четверг · 29 октября 2026</div>
+            </div>
+            <div class="difficulty easy"><i class="fas fa-circle" style="font-size:6px;"></i> Лёгкий</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box purple">
+                <i class="fas fa-suitcase"></i>
+                <div><strong>Резервный день.</strong> Если что-то не успели — сейчас самое время. Mercadona работает: свежие продукты на дорогу.</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">09:00–10:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Завтрак</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:00–12:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Прогулка по Пуэрто-де-ла-Крус</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:00–13:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Небольшая закупка</strong><div class="note">Хлеб, фрукты, вода, еда в дорогу</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">14:00–16:30</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Резервный блок:</strong> Тейде, Маска, Анага или отдых</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">19:00–20:00</div>
+                    <div class="dot" style="color: var(--north); background: var(--north);"></div>
+                    <div class="content"><strong>Упаковка, проверка документов</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">20:00</div>
+                    <div class="dot" style="color: #888; background: #888;"></div>
+                    <div class="content"><strong>Финальный ужин:</strong> Papas arrugadas, два mojo, рыба, козий сыр, оливки, салат и десерт</div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€20 за двоих</div>
+                    <div class="cost-details">Свежие продукты ~€15 · Небольшие расходы ~€5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY 12 ==================== -->
+    <div class="day-card" id="day-12">
+        <div class="day-header">
+            <div class="day-num" style="background: var(--flight);">30</div>
+            <div class="day-info">
+                <h2>Возврат авто и вылет</h2>
+                <div class="day-date">Пятница · 30 октября 2026</div>
+            </div>
+            <div class="difficulty hard"><i class="fas fa-circle" style="font-size:6px;"></i> Сложный</div>
+        </div>
+        <div class="day-body">
+            <div class="info-box danger">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>Критично:</strong> Сдача авто в 15:00 в TFS. Выезд из Пуэрто-де-ла-Крус с большим запасом — минимум 4 часа до сдачи!</div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-clock"></i> Тайминг дня</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">07:30–08:30</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Подъём, завтрак, сборы, уборка</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09:30</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Выезд из Пуэрто-де-ла-Крус</strong><div class="note">~90–95 км до TFS</div></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10:45–11:15</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Заправка и короткая остановка</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:30–12:00</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Прибытие в район TFS</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:00–13:30</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Запас на навигацию и очереди</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13:30–14:30</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Финальная подготовка авто и багажа</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Сдача автомобиля PlusCar</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:00–16:00</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Переход в терминал и регистрация</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:00–17:15</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Контроль безопасности и ожидание</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">18:00</div>
+                    <div class="dot" style="color: var(--flight); background: var(--flight);"></div>
+                    <div class="content"><strong>Вылет ✈️</strong></div>
+                </div>
+            </div>
+
+            <div class="cost-box">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <div class="cost-main">~€60 за двоих</div>
+                    <div class="cost-details">Полный бак перед сдачей ~€55 · Еда в дорогу ~€5</div>
+                </div>
+            </div>
+
+            <div class="tags" style="margin-top:16px;">
+                <a href="https://www.google.com/maps/dir/?api=1&origin=C.+Aceviño+6+Puerto+de+la+Cruz&destination=Tenerife+South+Airport+TFS" target="_blank" rel="noopener" class="tag maps"><i class="fas fa-route"></i> Puerto de la Cruz → TFS</a>
+            </div>
+        </div>
+    </div>
+    </div><!-- /#days-wrapper -->
+
+    <div class="footer">
+        <p>🌴 Тенерифе · 18–30 октября 2026 · Интерактивный план</p>
+        <p style="margin-top:6px; font-size:0.8rem;">Свайп влево/вправо или вкладки сверху. Стрелки ← → на клавиатуре. Тема — системная по умолчанию.</p>
+    </div>
+
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    /* ============ THEME ============ */
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getEffectiveTheme() {
+        const attr = root.getAttribute('data-theme');
+        if (attr === 'dark' || attr === 'light') return attr;
+        return prefersDark.matches ? 'dark' : 'light';
+    }
+
+    function updateIcon() {
+        const isDark = getEffectiveTheme() === 'dark';
+        themeToggle.innerHTML = isDark
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+        themeToggle.setAttribute('aria-label', isDark ? 'Включить светлую тему' : 'Включить тёмную тему');
+    }
+
+    // Init
+    let saved = null;
+    try { saved = localStorage.getItem('tenerife-theme'); } catch(e) {}
+    if (saved === 'dark' || saved === 'light') {
+        root.setAttribute('data-theme', saved);
+    }
+    updateIcon();
+
+    themeToggle.addEventListener('click', function() {
+        const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('tenerife-theme', next); } catch(e) {}
+        updateIcon();
+    });
+
+    // React to system change if no manual override
+    const systemListener = function() {
+        if (!root.hasAttribute('data-theme')) updateIcon();
+    };
+    if (prefersDark.addEventListener) {
+        prefersDark.addEventListener('change', systemListener);
+    } else if (prefersDark.addListener) {
+        prefersDark.addListener(systemListener);
+    }
+
+    /* ============ TABS ============ */
+    const tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    const dayCards = Array.prototype.slice.call(document.querySelectorAll('.day-card'));
+
+    function activateDay(index, scroll) {
+        if (index < 0 || index >= tabs.length) return;
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        tabs[index].classList.add('active');
+        dayCards.forEach(function(c) { c.classList.remove('active'); });
+        var card = document.getElementById('day-' + index);
+        if (card) {
+            card.classList.add('active');
+            if (scroll) {
+                // Scroll the tabs strip to make active tab visible
+                tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                // Scroll the page to the tabs / day card area
+                var tabsEl = document.getElementById('tabs');
+                var y = tabsEl.getBoundingClientRect().top + window.pageYOffset - 12;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+    }
+
+    tabs.forEach(function(tab, i) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            activateDay(i, true);
+        });
+        // iOS-friendly: also react to touchend if click is unreliable
+        tab.addEventListener('touchend', function(e) {
+            // Let the click event fire; do nothing special here.
+            // But if for some reason click doesn't fire, we handle it:
+        }, { passive: true });
+    });
+
+    /* ============ SWIPE (only on day cards area) ============ */
+    var wrapper = document.getElementById('days-wrapper');
+    var startX = 0, startY = 0, startTime = 0, tracking = false;
+
+    wrapper.addEventListener('touchstart', function(e) {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        tracking = true;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', function(e) {
+        if (!tracking) return;
+        tracking = false;
+        var touch = e.changedTouches[0];
+        var dx = touch.clientX - startX;
+        var dy = touch.clientY - startY;
+        var dt = Date.now() - startTime;
+
+        // Must be quick and primarily horizontal
+        if (dt > 600) return;
+        if (Math.abs(dx) < 60) return;
+        if (Math.abs(dx) < Math.abs(dy) * 1.5) return;
+
+        // Ignore if started on interactive element (links)
+        var target = e.target;
+        while (target && target !== wrapper) {
+            if (target.tagName === 'A' || target.tagName === 'BUTTON') return;
+            target = target.parentNode;
+        }
+
+        var active = document.querySelector('.tab.active');
+        if (!active) return;
+        var current = parseInt(active.dataset.day, 10);
+        var next = dx < 0 ? current + 1 : current - 1;
+        activateDay(next, true);
+    }, { passive: true });
+
+    /* ============ KEYBOARD ============ */
+    document.addEventListener('keydown', function(e) {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+        var active = document.querySelector('.tab.active');
+        if (!active) return;
+        var current = parseInt(active.dataset.day, 10);
+        if (e.key === 'ArrowRight') { activateDay(current + 1, true); e.preventDefault(); }
+        if (e.key === 'ArrowLeft')  { activateDay(current - 1, true); e.preventDefault(); }
+    });
+
+})();
+</script>
+</body>
+</html>
