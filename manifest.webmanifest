@@ -1,0 +1,25 @@
+{
+  "name": "Тенерифе · Интерактивный план",
+  "short_name": "Тенерифе",
+  "description": "План поездки 15 окт — 1 ноя 2026",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FEF7FF",
+  "theme_color": "#E67E22",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon.svg",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
