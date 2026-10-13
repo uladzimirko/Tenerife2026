@@ -136,19 +136,13 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.55;
-            padding: 16px;
-            min-height: 100vh;
-            transition: background 0.35s var(--ease-standard), color 0.35s var(--ease-standard);
-            font-size: 15px;
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); color: var(--text); line-height: 1.55; padding: 16px;
+            min-height: 100vh; transition: background 0.35s var(--ease-standard), color 0.35s var(--ease-standard);
+            font-size: 15px; -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Scroll progress */
         .scroll-progress {
             position: fixed; top: 0; left: 0; height: 3px; width: 0%;
             background: linear-gradient(90deg, var(--south), var(--north));
@@ -159,7 +153,7 @@
            HEADER
            ================================================================ */
         .header {
-            text-align: center; padding: 44px 20px 36px;
+            text-align: center; padding: 64px 20px 36px;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             border-radius: var(--r-xl); color: #fff; margin-bottom: 24px;
             position: relative; overflow: hidden; box-shadow: var(--elev-3);
@@ -186,21 +180,124 @@
         }
         @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .theme-toggle, .header-icon-btn {
-            position: absolute; top: 14px; width: 44px; height: 44px; border-radius: 50%;
-            border: none; background: rgba(255,255,255,0.12); color: #fff; font-size: 1.05rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s var(--ease-standard); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            touch-action: manipulation; z-index: 10; overflow: hidden;
+        /* --- Header toolbar (flexbox — надёжно, без конфликтов) --- */
+        .header-toolbar {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+            z-index: 10;
         }
-        .theme-toggle { right: 14px; }
-        .header-icon-btn { left: 14px; }
-        .theme-toggle::after, .header-icon-btn::after { content: ''; position: absolute; inset: 0; background: #fff; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
-        .theme-toggle:hover::after, .theme-toggle:focus-visible::after, .header-icon-btn:hover::after { opacity: var(--state-hover); }
-        .theme-toggle:active::after, .header-icon-btn:active::after { opacity: var(--state-press); }
-        .theme-toggle:hover, .header-icon-btn:hover { transform: scale(1.06); }
-        .theme-toggle i, .header-icon-btn i { transition: transform 0.5s var(--ease-emphasized); position: relative; z-index: 1; }
+        .header-toolbar > * { pointer-events: auto; }
+
+        .header-icon-btn,
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s var(--ease-standard), transform 0.2s var(--ease-standard);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header-icon-btn::after,
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .header-icon-btn:hover::after,
+        .header-icon-btn:focus-visible::after,
+        .theme-toggle:hover::after,
+        .theme-toggle:focus-visible::after { opacity: var(--state-hover); }
+        .header-icon-btn:active::after,
+        .theme-toggle:active::after { opacity: var(--state-press); }
+        .header-icon-btn:hover,
+        .theme-toggle:hover { transform: scale(1.06); }
+        .header-icon-btn i,
+        .theme-toggle i {
+            transition: transform 0.5s var(--ease-emphasized);
+            position: relative;
+            z-index: 1;
+        }
         .theme-toggle.spinning i { transform: rotate(360deg); }
+
+        /* --- Header status (live clock + trip info) --- */
+        .header-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 14px;
+            padding: 8px 18px;
+            border-radius: var(--r-full);
+            background: rgba(255,255,255,0.10);
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.92);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.1px;
+            animation: fadeSlideUp 0.6s 0.4s var(--ease-decelerate) both;
+        }
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+            animation: statusPulse 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes statusPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+            70%  { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        /* --- "Сегодня" индикатор на активной вкладке --- */
+        .tab.today {
+            border-color: var(--success-border);
+        }
+        .tab.today::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--success-border);
+            margin-right: 5px;
+            flex-shrink: 0;
+            animation: todayDot 1.6s ease-in-out infinite;
+        }
+        @keyframes todayDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50%      { transform: scale(1.35); opacity: 0.65; }
+        }
 
         /* ================================================================
            STATS
@@ -258,6 +355,7 @@
         .tab.active { background: var(--text); color: var(--bg); border-color: var(--text); box-shadow: var(--elev-2); transform: scale(1); }
         .tab .tab-icon { margin-right: 4px; transition: transform 0.3s var(--ease-emphasized); }
         .tab.active .tab-icon { transform: scale(1.15); }
+        .tab.active.today::before { background: #4ade80; }
 
         /* ================================================================
            DAY CARDS
@@ -308,7 +406,7 @@
         .timeline-item .content .note { font-size: 0.82rem; color: var(--text-light); margin-top: 2px; }
 
         /* ================================================================
-           DETAILS BLOCK (НОВОЕ)
+           DETAILS BLOCK
            ================================================================ */
         .details-toggle {
             display: inline-flex; align-items: center; gap: 6px;
@@ -340,64 +438,21 @@
             to { opacity: 1; max-height: 800px; }
         }
 
-        .details-content .details-inner {
-            padding: 16px 18px;
-            font-size: 0.87rem;
-            line-height: 1.6;
-            color: var(--text-medium);
-        }
-
+        .details-content .details-inner { padding: 16px 18px; font-size: 0.87rem; line-height: 1.6; color: var(--text-medium); }
         .details-content .details-inner p { margin-bottom: 8px; }
         .details-content .details-inner p:last-child { margin-bottom: 0; }
         .details-content .details-inner strong { color: var(--text); font-weight: 600; }
 
-        .details-content .fact-row {
-            display: flex; align-items: flex-start; gap: 8px;
-            margin-bottom: 6px; font-size: 0.84rem;
-        }
-        .details-content .fact-row i {
-            color: var(--details-border);
-            font-size: 0.9rem;
-            margin-top: 2px;
-            width: 16px;
-            text-align: center;
-            flex-shrink: 0;
-        }
+        .details-content .fact-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 0.84rem; }
+        .details-content .fact-row i { color: var(--details-border); font-size: 0.9rem; margin-top: 2px; width: 16px; text-align: center; flex-shrink: 0; }
 
-        .details-content .photo-wrap {
-            margin: 12px 0 10px;
-            border-radius: var(--r-sm);
-            overflow: hidden;
-            position: relative;
-            background: var(--surface-2);
-        }
-        .details-content .photo-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: var(--r-sm);
-            transition: transform 0.4s var(--ease-emphasized);
-        }
+        .details-content .photo-wrap { margin: 12px 0 10px; border-radius: var(--r-sm); overflow: hidden; position: relative; background: var(--surface-2); }
+        .details-content .photo-wrap img { width: 100%; height: auto; display: block; border-radius: var(--r-sm); transition: transform 0.4s var(--ease-emphasized); }
         .details-content .photo-wrap:hover img { transform: scale(1.03); }
-        .details-content .photo-credit {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 4px 10px;
-            font-size: 0.65rem;
-            color: #fff;
-            background: linear-gradient(transparent, rgba(0,0,0,0.6));
-            text-align: right;
-        }
+        .details-content .photo-credit { position: absolute; bottom: 0; left: 0; right: 0; padding: 4px 10px; font-size: 0.65rem; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.6)); text-align: right; }
 
-        .details-content .details-tags {
-            display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
-        }
-        .details-content .details-tag {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 4px 10px; border-radius: var(--r-full);
-            background: var(--surface-1); font-size: 0.72rem;
-            font-weight: 600; color: var(--text-light);
-        }
+        .details-content .details-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .details-content .details-tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--r-full); background: var(--surface-1); font-size: 0.72rem; font-weight: 600; color: var(--text-light); }
 
         /* ================================================================
            TAGS
@@ -512,7 +567,10 @@
            ================================================================ */
         @media (max-width: 600px) {
             body { padding: 12px; }
-            .header { padding: 36px 16px 28px; }
+            .header { padding: 56px 16px 28px; }
+            .header-icon-btn, .theme-toggle { width: 40px; height: 40px; font-size: 0.95rem; }
+            .header-toolbar { top: 12px; left: 12px; right: 12px; }
+            .header-status { font-size: 0.75rem; padding: 7px 14px; }
             .day-header { padding: 16px 18px; gap: 12px; }
             .day-header .day-num { width: 46px; height: 46px; font-size: 1.05rem; }
             .day-body { padding: 18px 18px 22px; }
@@ -521,9 +579,6 @@
             .timeline-item .dot { left: -18px; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .summary-section { padding: 18px 16px; }
-            .theme-toggle, .header-icon-btn { width: 40px; height: 40px; font-size: 0.95rem; top: 12px; }
-            .theme-toggle { right: 12px; }
-            .header-icon-btn { left: 12px; }
             .fab { width: 52px; height: 52px; border-radius: 16px; font-size: 1.05rem; }
             .fab-container { right: 14px; bottom: 14px; gap: 10px; }
             .summary-grid { grid-template-columns: 1fr; }
@@ -534,7 +589,7 @@
         }
 
         @media print {
-            .tabs, .route-link, .tag.maps, .theme-toggle, .fab-container, .scroll-progress, .header-icon-btn, .details-toggle { display: none !important; }
+            .tabs, .route-link, .tag.maps, .theme-toggle, .fab-container, .scroll-progress, .header-icon-btn, .details-toggle, .header-status { display: none !important; }
             .day-card { display: block !important; break-inside: avoid; page-break-inside: avoid; }
             .header { background: #fff !important; color: #000 !important; box-shadow: none !important; }
             .header::before { display: none !important; }
@@ -551,18 +606,24 @@
 <div class="container">
 
     <header class="header">
-        <button class="header-icon-btn ripple-host" id="tipsBtn" aria-label="Советы путешественнику" title="Советы">
-            <i class="fas fa-lightbulb"></i>
-        </button>
-        <button class="theme-toggle ripple-host" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
-            <i class="fas fa-moon"></i>
-        </button>
+        <div class="header-toolbar">
+            <button class="header-icon-btn ripple-host" id="tipsBtn" aria-label="Советы путешественнику" title="Советы">
+                <i class="fas fa-lightbulb"></i>
+            </button>
+            <button class="theme-toggle ripple-host" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
         <h1>🌴 Тенерифе · 12 ночей</h1>
         <p class="subtitle">Интерактивный план · Пара · Юг → Север → Вылет</p>
         <div class="dates">
             <i class="fas fa-plane-departure"></i>
             <span>18 — 30 октября 2026</span>
             <i class="fas fa-plane-arrival"></i>
+        </div>
+        <div class="header-status" id="headerStatus">
+            <span class="status-pulse"></span>
+            <span id="statusText">Определяем дату…</span>
         </div>
     </header>
 
@@ -705,7 +766,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Омлет с картофелем и салат</div></div>
             </div>
 
-            <!-- DETAILS: Тейде -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-teide">
                 <i class="fas fa-chevron-down"></i> Подробнее о Тейде
             </button>
@@ -716,12 +776,12 @@
                         <div class="photo-credit">Фото: Wikimedia Commons / CC BY-SA</div>
                     </div>
                     <p><strong>Что это:</strong> Национальный парк Тейде — объект Всемирного наследия ЮНЕСКО с 2007 года и самый посещаемый национальный парк Испании. Здесь находится вулкан Тейде (3718 м) — высочайшая вершина Испании и третий по высоте вулкан в мире от подножия до вершины (7500 м от дна океана).</p>
-                    <p><strong>Чем известно:</strong> В эпоху Возрождения Тейде считался самой высокой горой в мире. Для гуанчей (коренных жителей) вулкан был священным — они называли его «Эчейде» (Ад). Последнее извержение внутри парка произошло в 1798 году.</p>
+                    <p><strong>Чем известно:</strong> В эпоху Возрождения Тейде считался самой высокой горой в мире. Для гуанчей вулкан был священным — они называли его «Эчейде» (Ад). Последнее извержение внутри парка произошло в 1798 году.</p>
                     <div class="fact-row"><i class="fas fa-mountain"></i><span>Парк занимает 190 км² — почти 10% площади Тенерифе</span></div>
                     <div class="fact-row"><i class="fas fa-clock"></i><span>Канатная дорога поднимает на 3555 м за 8 минут</span></div>
                     <div class="fact-row"><i class="fas fa-temperature-low"></i><span>Наверху на 10–15 °C холоднее, чем на побережье</span></div>
                     <div class="details-tags">
-                        <span class="details-tag"><i class="fas fa-unesco"></i> ЮНЕСКО</span>
+                        <span class="details-tag"><i class="fas fa-landmark"></i> ЮНЕСКО</span>
                         <span class="details-tag"><i class="fas fa-mountain"></i> 3718 м</span>
                         <span class="details-tag"><i class="fas fa-users"></i> 4 млн посетителей/год</span>
                     </div>
@@ -759,17 +819,16 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рыба, картофель, салат и mojo</div></div>
             </div>
 
-            <!-- DETAILS: Киты -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-whales">
                 <i class="fas fa-chevron-down"></i> Подробнее о китах и дельфинах
             </button>
             <div class="details-content" id="details-whales">
                 <div class="details-inner">
                     <p><strong>Что это:</strong> Южное побережье Тенерифе — одно из немногих мест в мире, где можно круглогодично наблюдать резидентную популяцию короткоплавниковых гриндов (пилот-китов). Это не мигрирующие животные — они живут здесь постоянно.</p>
-                    <p><strong>Чем известно:</strong> Морская зона между Тенерифе и Ла-Гомерой (Teno-Rasca) — первое официальное убежище китов в Европе, созданное в 2011 году. Здесь обитает более 300 пилот-китов. Взрослые особи достигают 4–5 м и весят более 3 тонн.</p>
+                    <p><strong>Чем известно:</strong> Морская зона между Тенерифе и Ла-Гомерой (Teno-Rasca) — первое официальное убежище китов в Европе, созданное в 2011 году. Здесь обитает более 300 пилот-китов.</p>
                     <div class="fact-row"><i class="fas fa-water"></i><span>Пилот-киты ныряют на глубину до 1000 м и могут задерживать дыхание на 30 минут</span></div>
-                    <div class="fact-row"><i class="fas fa-fish"></i><span>Помимо китов, здесь часто встречаются бутылконосые дельфины, зелёные черепахи и даже кашалоты</span></div>
-                    <div class="fact-row"><i class="fas fa-sun"></i><span>Лучшее время — утро (10:00), море спокойнее, животных больше</span></div>
+                    <div class="fact-row"><i class="fas fa-fish"></i><span>Помимо китов, здесь часто встречаются дельфины, черепахи и кашалоты</span></div>
+                    <div class="fact-row"><i class="fas fa-sun"></i><span>Лучшее время — утро (10:00), море спокойнее</span></div>
                     <div class="details-tags">
                         <span class="details-tag"><i class="fas fa-shield-alt"></i> Убежище китов</span>
                         <span class="details-tag"><i class="fas fa-water"></i> 300+ пилот-китов</span>
@@ -805,7 +864,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рис с курицей и овощами</div></div>
             </div>
 
-            <!-- DETAILS: Лос-Гигантес -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-gigantes">
                 <i class="fas fa-chevron-down"></i> Подробнее о Лос-Гигантес
             </button>
@@ -822,13 +880,12 @@
                     <div class="fact-row"><i class="fas fa-binoculars"></i><span>С обзорной площадки Mirador de Archipenque открывается панорамный вид</span></div>
                     <div class="details-tags">
                         <span class="details-tag"><i class="fas fa-mountain"></i> 600 м</span>
-                        <span class="details-tag"><i class="fas fa-unesco"></i> Природный парк Тено</span>
+                        <span class="details-tag"><i class="fas fa-leaf"></i> Природный парк Тено</span>
                         <span class="details-tag"><i class="fas fa-camera"></i> Фото-точка №1</span>
                     </div>
                 </div>
             </div>
 
-            <!-- DETAILS: Гарачико -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-garachico">
                 <i class="fas fa-chevron-down"></i> Подробнее о Гарачико
             </button>
@@ -841,11 +898,11 @@
                     <p><strong>Что это:</strong> Гарачико — бывший главный торговый порт Тенерифе (XVI–XVII века), который был почти полностью уничтожен извержением вулкана в 1706 году. Лава залила бухту и порт, но город возродился из пепла.</p>
                     <p><strong>Чем известно:</strong> Сегодня Гарачико — один из самых красивых городков острова. Главная достопримечательность — природные бассейны <strong>El Caletón</strong>, образованные лавой, которая, достигнув океана, мгновенно застыла, создав естественные купальни с кристально чистой водой.</p>
                     <div class="fact-row"><i class="fas fa-history"></i><span>До 1706 года — главный порт Тенерифе, «канарский Амстердам»</span></div>
-                    <div class="fact-row"><i class="fas fa-volcano"></i><span>Извержение вулкана Trevejo длилось 8 дней и уничтожило порт</span></div>
+                    <div class="fact-row"><i class="fas fa-fire"></i><span>Извержение вулкана Trevejo длилось 8 дней и уничтожило порт</span></div>
                     <div class="fact-row"><i class="fas fa-swimming-pool"></i><span>El Caletón — бесплатные природные бассейны с морской водой</span></div>
                     <div class="details-tags">
                         <span class="details-tag"><i class="fas fa-history"></i> XVI век</span>
-                        <span class="details-tag"><i class="fas fa-volcano"></i> Извержение 1706</span>
+                        <span class="details-tag"><i class="fas fa-fire"></i> Извержение 1706</span>
                         <span class="details-tag"><i class="fas fa-water"></i> Природные бассейны</span>
                     </div>
                 </div>
@@ -877,7 +934,6 @@
                 <div class="timeline-item"><div class="time">13:30–16:00</div><div class="dot" style="color: var(--warning); background: var(--warning);"></div><div class="content"><strong>Обратная дорога</strong></div></div>
             </div>
 
-            <!-- DETAILS: Маска -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-masca">
                 <i class="fas fa-chevron-down"></i> Подробнее о Маске
             </button>
@@ -935,7 +991,6 @@
                 <div class="timeline-item"><div class="time">18:30–19:30</div><div class="dot" style="color: var(--north); background: var(--north);"></div><div class="content"><strong>Plaza del Charco</strong></div></div>
             </div>
 
-            <!-- DETAILS: Ла-Лагуна -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-laguna">
                 <i class="fas fa-chevron-down"></i> Подробнее о Ла-Лагуне
             </button>
@@ -947,11 +1002,11 @@
                     </div>
                     <p><strong>Что это:</strong> Сан-Кристобаль-де-ла-Лагуна — первый не укреплённый испанский колониальный город, основанный в 1497 году. С 1999 года — объект Всемирного наследия ЮНЕСКО. Его планировка (шахматная сетка улиц) стала моделью для многих колониальных городов Америки.</p>
                     <p><strong>Чем известно:</strong> Это бывшая столица Тенерифе и университетский город. Здесь находится старейший университет Канарских островов (Universidad de La Laguna, 1792) и кафедральный собор (1515, перестроен в неоготическом стиле в 1904–1915).</p>
-                    <div class="fact-row"><i class="fas fa-unesco"></i><span>Всемирное наследие ЮНЕСКО с 1999 года</span></div>
+                    <div class="fact-row"><i class="fas fa-landmark"></i><span>Всемирное наследие ЮНЕСКО с 1999 года</span></div>
                     <div class="fact-row"><i class="fas fa-city"></i><span>Первая не укреплённая колониальная столица Испании</span></div>
                     <div class="fact-row"><i class="fas fa-university"></i><span>Университет с 1792 года — старейший на Канарах</span></div>
                     <div class="details-tags">
-                        <span class="details-tag"><i class="fas fa-unesco"></i> ЮНЕСКО</span>
+                        <span class="details-tag"><i class="fas fa-landmark"></i> ЮНЕСКО</span>
                         <span class="details-tag"><i class="fas fa-history"></i> 1497</span>
                         <span class="details-tag"><i class="fas fa-church"></i> Кафедральный собор</span>
                     </div>
@@ -1002,7 +1057,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Тортилья, салат, козий сыр, хлеб, оливки</div></div>
             </div>
 
-            <!-- DETAILS: Пуэрто-де-ла-Крус -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-puerto">
                 <i class="fas fa-chevron-down"></i> Подробнее о Пуэрто-де-ла-Крус
             </button>
@@ -1054,7 +1108,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Паста с тунцом или рис с овощами</div></div>
             </div>
 
-            <!-- DETAILS: Лоро-парк -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-loro">
                 <i class="fas fa-chevron-down"></i> Подробнее о Лоро-парке
             </button>
@@ -1109,7 +1162,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Суп или рагу, хлеб и сыр</div></div>
             </div>
 
-            <!-- DETAILS: Анага -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-anaga">
                 <i class="fas fa-chevron-down"></i> Подробнее об Анаге
             </button>
@@ -1125,7 +1177,7 @@
                     <div class="fact-row"><i class="fas fa-binoculars"></i><span>Более 100 эндемичных видов растений и животных</span></div>
                     <div class="fact-row"><i class="fas fa-mountain"></i><span>Высота до 1000 м, перепад высот 300–500 м на км²</span></div>
                     <div class="details-tags">
-                        <span class="details-tag"><i class="fas fa-unesco"></i> Биосферный заповедник</span>
+                        <span class="details-tag"><i class="fas fa-landmark"></i> Биосферный заповедник</span>
                         <span class="details-tag"><i class="fas fa-tree"></i> Лавровые леса</span>
                         <span class="details-tag"><i class="fas fa-cloud-rain"></i> Влажный климат</span>
                     </div>
@@ -1162,7 +1214,6 @@
                 <div class="timeline-item"><div class="time">20:00</div><div class="dot" style="color: var(--text-light); background: var(--text-light);"></div><div class="content"><strong>Ужин:</strong> Рыба, картофель, mojo, салат и bienmesabe</div></div>
             </div>
 
-            <!-- DETAILS: Ла-Оротава -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-orotava">
                 <i class="fas fa-chevron-down"></i> Подробнее о Ла-Оротаве
             </button>
@@ -1185,7 +1236,6 @@
                 </div>
             </div>
 
-            <!-- DETAILS: Икод -->
             <button class="details-toggle ripple-host" onclick="toggleDetails(this)" data-target="details-icod">
                 <i class="fas fa-chevron-down"></i> Подробнее об Икоде и Драконовом дереве
             </button>
@@ -1284,7 +1334,6 @@
 
 </div>
 
-<!-- FAB -->
 <div class="fab-container" aria-label="Быстрые действия">
     <button class="fab primary ripple-host" id="fabNext" aria-label="Следующий день" title="Следующий день">
         <i class="fas fa-arrow-right" id="fabNextIcon"></i>
@@ -1295,7 +1344,6 @@
     </button>
 </div>
 
-<!-- TIPS DIALOG -->
 <dialog class="tips-dialog" id="tipsDialog">
     <div class="tips-panel">
         <div class="tips-header">
@@ -1307,33 +1355,39 @@
                 <h3><i class="fas fa-cloud-sun"></i> Погода и одежда</h3>
                 <div class="tip-item"><i class="fas fa-thermometer-half tip-icon"></i><div>На юге +24–27 °C круглый год, на севере на 2–3 °C прохладнее. На Тейде может быть <strong>0–10 °C</strong> — берите куртки и кроссовки.</div></div>
                 <div class="tip-item"><i class="fas fa-sun tip-icon"></i><div>SPF 50 обязателен даже зимой — солнце на Канарах очень активное.</div></div>
+                <div class="tip-item"><i class="fas fa-wind tip-icon"></i><div>На Эль-Медано и в Анаге часто ветрено. Ветровка пригодится и летом.</div></div>
             </div>
             <div class="tip-group">
                 <h3><i class="fas fa-car"></i> Аренда авто</h3>
                 <div class="tip-item"><i class="fas fa-camera tip-icon"></i><div><strong>Сфотографируйте машину со всех сторон</strong> до выезда — включая крышу, диски и салон.</div></div>
                 <div class="tip-item"><i class="fas fa-gas-pump tip-icon"></i><div>Заправляйтесь на <strong>Cepsa или Repsol</strong>. Перед сдачей обязателен полный бак.</div></div>
+                <div class="tip-item"><i class="fas fa-parking tip-icon"></i><div>В Пуэрто-де-ла-Крус парковка бесплатная у <strong>Plaza del Charco</strong> вечером.</div></div>
                 <div class="tip-item"><i class="fas fa-mountain tip-icon"></i><div>Дороги в Анаге и Маске <strong>очень извилистые</strong>. Если укачивает — берите таблетки.</div></div>
             </div>
             <div class="tip-group">
                 <h3><i class="fas fa-utensils"></i> Еда и магазины</h3>
-                <div class="tip-item"><i class="fas fa-store tip-icon"></i><div><strong>Mercadona закрыта по воскресеньям.</strong> В субботу вечером берите продукты на 2 дня вперёд.</div></div>
-                <div class="tip-item"><i class="fas fa-wine-glass tip-icon"></i><div>Местное вино <strong>Tacoronte-Acentejo</strong> — от €4–6 за бутылку.</div></div>
-                <div class="tip-item"><i class="fas fa-utensils tip-icon"></i><div>Меню дня (<em>menú del día</em>) в тавернах — <strong>€10–14</strong> за 2 блюда + напиток + десерт.</div></div>
+                <div class="tip-item"><i class="fas fa-store tip-icon"></i><div><strong>Mercadona закрыта по воскресеньям.</strong> В субботу вечером берите продукты на 2 дня вперёд. Открыта: пн–сб 9:00–21:30.</div></div>
+                <div class="tip-item"><i class="fas fa-wine-glass tip-icon"></i><div>Местное вино <strong>Tacoronte-Acentejo</strong> — от €4–6 за бутылку в Mercadona.</div></div>
+                <div class="tip-item"><i class="fas fa-cheese tip-icon"></i><div>Обязательно попробуйте <strong>queso de cabra</strong>, <strong>mojo rojo/verde</strong>, <strong>almogrote</strong> и <strong>bienmesabe</strong> на десерт.</div></div>
+                <div class="tip-item"><i class="fas fa-utensils tip-icon"></i><div>В меню дня (<em>menú del día</em>) в тавернах — <strong>€10–14</strong> за 2 блюда + напиток + десерт.</div></div>
             </div>
             <div class="tip-group">
                 <h3><i class="fas fa-euro-sign"></i> Деньги и связь</h3>
-                <div class="tip-item"><i class="fas fa-credit-card tip-icon"></i><div>Везде принимают карты, но <strong>€50–80 наличными</strong> на мелкие расходы пригодятся.</div></div>
-                <div class="tip-item"><i class="fas fa-sim-card tip-icon"></i><div>Для интернета — <strong>eSIM от Airalo</strong> (Европа ~€8 за 5 ГБ).</div></div>
+                <div class="tip-item"><i class="fas fa-credit-card tip-icon"></i><div>Везде принимают карты, но <strong>€50–80 наличными</strong> на мелкие расходы и парковки пригодятся.</div></div>
+                <div class="tip-item"><i class="fas fa-sim-card tip-icon"></i><div>Для интернета — <strong>eSIM от Airalo</strong> (Европа ~€8 за 5 ГБ) или местная SIM в аэропорту.</div></div>
+                <div class="tip-item"><i class="fas fa-phone tip-icon"></i><div>Экстренные номера Испании: <strong>112</strong> (единый), 091 (полиция), 061 (скорая).</div></div>
             </div>
             <div class="tip-group">
                 <h3><i class="fas fa-ticket-alt"></i> Билеты и брони</h3>
-                <div class="tip-item"><i class="fas fa-cable-car tip-icon"></i><div><strong>Канатная дорога Тейде</strong> — бронируйте онлайн за 3–5 дней.</div></div>
-                <div class="tip-item"><i class="fas fa-parrot tip-icon"></i><div><strong>Лоро-парк</strong> — онлайн-билеты дешевле на €3–5.</div></div>
+                <div class="tip-item"><i class="fas fa-cable-car tip-icon"></i><div><strong>Канатная дорога Тейде</strong> — бронируйте онлайн за 3–5 дней. Утром до 10:00 меньше очередей.</div></div>
+                <div class="tip-item"><i class="fas fa-dove tip-icon"></i><div><strong>Лоро-парк</strong> — онлайн-билеты дешевле на €3–5 и без очереди. Приходите к открытию (09:30).</div></div>
+                <div class="tip-item"><i class="fas fa-ship tip-icon"></i><div>Морские экскурсии к китам — берите <strong>утренний слот (10:00)</strong>. Море спокойнее, животных больше.</div></div>
             </div>
             <div class="tip-group">
                 <h3><i class="fas fa-heart"></i> Для пары</h3>
-                <div class="tip-item"><i class="fas fa-camera-retro tip-icon"></i><div>Лучшие точки для фото: <strong>Лос-Гигантес</strong>, <strong>Playa de Benijo</strong>, <strong>Ла-Оротава</strong>.</div></div>
-                <div class="tip-item"><i class="fas fa-glass-cheers tip-icon"></i><div>Закат на <strong>Playa Jardín</strong> — романтично и безлюдно.</div></div>
+                <div class="tip-item"><i class="fas fa-camera-retro tip-icon"></i><div>Лучшие точки для фото: <strong>Лос-Гигантес</strong> (утёсы), <strong>Playa de Benijo</strong> (закат), <strong>Ла-Оротава</strong> (сады), <strong>смотровая Тейде</strong> (рассвет).</div></div>
+                <div class="tip-item"><i class="fas fa-glass-cheers tip-icon"></i><div>Закат на <strong>Playa Jardín</strong> в Пуэрто-де-ла-Крус — романтично и безлюдно. Возьмите вино и плед.</div></div>
+                <div class="tip-item"><i class="fas fa-spa tip-icon"></i><div>Для расслабления — <strong>Lago Martiánez</strong> (€5,5/чел) или <strong>тайские массажи</strong> в Лос-Кристианосе (€25–40/час).</div></div>
             </div>
         </div>
     </div>
@@ -1530,14 +1584,79 @@
         if (isOpen) {
             content.classList.remove('open');
             btn.classList.remove('open');
-            btn.innerHTML = '<i class="fas fa-chevron-down"></i> ' + btn.textContent.trim().replace(/^Подробнее о /, 'Подробнее о ');
         } else {
             content.classList.add('open');
             btn.classList.add('open');
         }
     };
 
-    /* INIT */
+    /* ================================================================
+       АВТО-ОПРЕДЕЛЕНИЕ ТЕКУЩЕЙ ДАТЫ (2026)
+       ================================================================ */
+    var TRIP_START = new Date(2026, 9, 18); // 18 октября 2026
+    var TRIP_DAYS_COUNT = 13;               // дни 0..12 (18.10 – 30.10)
+
+    function getTripInfo() {
+        var now = new Date();
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var start = new Date(TRIP_START.getFullYear(), TRIP_START.getMonth(), TRIP_START.getDate());
+        var diffDays = Math.round((today - start) / 86400000);
+        if (diffDays < 0) return { status: 'before', days: -diffDays, index: -1 };
+        if (diffDays >= TRIP_DAYS_COUNT) return { status: 'after', days: diffDays - TRIP_DAYS_COUNT + 1, index: -1 };
+        return { status: 'during', days: 0, index: diffDays };
+    }
+
+    function markTodayTab() {
+        tabs.forEach(function(t) { t.classList.remove('today'); });
+        var trip = getTripInfo();
+        if (trip.status === 'during' && tabs[trip.index]) {
+            tabs[trip.index].classList.add('today');
+        }
+    }
+
+    var statusText = document.getElementById('statusText');
+    function updateHeaderStatus() {
+        var now = new Date();
+        var timeStr = now.toLocaleTimeString('ru-RU', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+        var dateStr = now.toLocaleDateString('ru-RU', {
+            weekday: 'short', day: 'numeric', month: 'short'
+        });
+        var trip = getTripInfo();
+        var extra;
+        if (trip.status === 'before') {
+            if (trip.days === 0) extra = 'поездка начинается сегодня!';
+            else if (trip.days === 1) extra = 'завтра начало поездки';
+            else extra = 'до поездки ' + trip.days + ' дн.';
+        } else if (trip.status === 'during') {
+            extra = 'день ' + (trip.index + 1) + ' из ' + TRIP_DAYS_COUNT;
+        } else {
+            extra = 'поездка завершена';
+        }
+        if (statusText) {
+            statusText.textContent = dateStr + ' · ' + timeStr + ' · ' + extra;
+        }
+    }
+
+    /* INIT — авто-открытие нужного дня */
+    (function initAutoDay() {
+        var trip = getTripInfo();
+
+        if (trip.status === 'during') {
+            activateDay(trip.index, false);
+        }
+
+        markTodayTab();
+        updateHeaderStatus();
+        setInterval(updateHeaderStatus, 1000);
+
+        // Перепроверка смены дня через полночь
+        setInterval(function() {
+            markTodayTab();
+        }, 60000);
+    })();
+
     updateFab();
 
 })();
